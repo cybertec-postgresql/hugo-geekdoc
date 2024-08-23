@@ -3,7 +3,7 @@ edit_page: Seite bearbeiten
 
 nav_navigation: Navigation
 nav_tags: Tags
-nav_more: Weitere
+nav_more: Weiteres
 nav_top: Nach oben
 
 form_placeholder_search: Suchen
@@ -51,3 +51,6 @@ propertylist_default: Standardwert
 pagination_page_prev: vorher
 pagination_page_next: weiter
 pagination_page_state: "{{ .PageNumber }}/{{ .TotalPages }}"
+
+custom_product_of_cybertec: Ein Produkt von CYBERTEC
+custom_support_button: Support
