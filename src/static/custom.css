@@ -7,6 +7,7 @@
     --ci-color-success: #009688;
     --ci-color-warning: #ffb300;
     --ci-color-error1: #cc3333;
+    --ci-color-error2: #f52222;
     --ci-lightest-of-blues: #eaf4ff;
     --ci-color-white: #ffffff;
 
@@ -18,7 +19,6 @@
     --custom-header-margin: 2rem;
     --custom-link-color: var(--ci-color-tertiary);
     --custom-paper-color: #ffffff;
-
     /* Taxonomy Design System - Using CI Colors */
     --taxonomy-tag-color: var(--ci-color-secondary);
     --taxonomy-category-color: var(--ci-color-success);
@@ -57,7 +57,6 @@
     --custom-paper-color: var(--ci-color-white);
     --footer-background: var(--ci-color-primary);
     --header-background: var(--ci-color-primary);
-
     /* Taxonomy Light Mode Colors */
     --taxonomy-bg-tag: rgba(78, 193, 236, 0.1);
     --taxonomy-bg-category: rgba(0, 150, 136, 0.1);
@@ -89,7 +88,6 @@
         --custom-paper-color: var(--ci-color-white);
         --footer-background: var(--ci-color-primary);
         --header-background: var(--ci-color-primary);
-
         /* Taxonomy Light Mode Colors */
         --taxonomy-bg-tag: rgba(78, 193, 236, 0.1);
         --taxonomy-bg-category: rgba(0, 150, 136, 0.1);
@@ -107,8 +105,8 @@
         --taxonomy-border-card: var(--custom-paper-color);
         --taxonomy-heading-primary: var(--custom-color-heading-color);
         --taxonomy-link-color: var(--custom-link-color);
-    --taxonomy-meta-filter-brightness: 0.96;
-}
+        --taxonomy-meta-filter-brightness: 0.96;
+    }
 }
 
 
@@ -120,7 +118,6 @@
     --custom-color-heading-color: var(--ci-color-white);
     --custom-paper-color: #181a1b;
     --header-background: var(--ci-color-primary);
-
     /* Taxonomy Dark Mode Colors */
     --taxonomy-bg-tag: rgba(78, 193, 236, 0.15);
     --taxonomy-bg-category: rgba(0, 150, 136, 0.15);
@@ -143,7 +140,6 @@
     --taxonomy-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
     --taxonomy-shadow-md: 0 2px 20px -10px rgba(0, 0, 0, 0.5);
     --taxonomy-shadow-lg: 0 4px 24px -12px rgba(0, 0, 0, 0.6);
-
     /* Fix the $$ highlighting */
     .chroma .err {
         color: inherit;
@@ -159,7 +155,6 @@
         --custom-color-heading-color: var(--ci-color-white);
         --custom-paper-color: #181a1b;
         --header-background: var(--ci-color-primary);
-
         /* Taxonomy Dark Mode Colors */
         --taxonomy-bg-tag: rgba(78, 193, 236, 0.15);
         --taxonomy-bg-category: rgba(0, 150, 136, 0.15);
@@ -182,7 +177,6 @@
         --taxonomy-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
         --taxonomy-shadow-md: 0 2px 20px -10px rgba(0, 0, 0, 0.5);
         --taxonomy-shadow-lg: 0 4px 24px -12px rgba(0, 0, 0, 0.6);
-
         /* Fix the $$ highlighting */
         .chroma .err {
             color: inherit;
@@ -1082,7 +1076,6 @@ h6 {
     outline: 3px solid var(--taxonomy-border-accent);
     outline-offset: 3px;
 }
-
 /* Customize the footer */
 .gdoc-footer {
     display: flex;
