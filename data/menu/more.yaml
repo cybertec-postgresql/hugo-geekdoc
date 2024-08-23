@@ -1,0 +1,26 @@
+---
+more:
+  - name: CYBERTEC
+    icon: "cybertec"
+    ref: "https://www.cybertec-postgresql.com"
+    external: true
+  - name: CPO
+    icon: "cpo"
+    ref: "https://github.com/cybertec-postgresql/CYBERTEC-pg-operator"
+    external: true
+  - name: CYPEX
+    icon: "cypex"
+    ref: "https://www.cybertec-postgresql.com/en/products/cypex/"
+    external: true
+  - name: Migrator
+    icon: "migrator"
+    ref: "https://www.cybertec-postgresql.com/en/products/cybertec-migrator/"
+    external: true
+  - name: Scalefield
+    icon: "scalefield"
+    ref: "https://www.cybertec-postgresql.com/en/products/scalefield/"
+    external: true
+  - name: pgwatch
+    icon: "pgwatch"
+    ref: "https://pgwatch.com/"
+    external: true

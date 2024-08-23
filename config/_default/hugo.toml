@@ -1,0 +1,9 @@
+disablePathToLower = true
+enableGitInfo = true
+enableRobotsTXT = true
+
+[taxonomies]
+tag = "tags"
+
+[params]
+geekdocCollapseAllSections = true
