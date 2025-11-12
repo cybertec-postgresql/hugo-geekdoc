@@ -1,0 +1,28 @@
+{{- /*
+  Partial: taxonomy-links
+  Displays navigation links to taxonomy index pages
+  Usage: {{ partial "taxonomy-links.html" . }}
+*/ -}}
+{{- if or .Site.Taxonomies.tags .Site.Taxonomies.categories .Site.Taxonomies.features -}}
+<div class="taxonomy-links-container">
+  <p>Browse Documentation by Topic:</p>
+  <div class="taxonomy-links">
+    {{- if .Site.Taxonomies.tags -}}
+    <a href="{{ "tags/" | relLangURL }}" class="taxonomy-link taxonomy-link-tags">
+      All Tags
+    </a>
+    {{- end -}}
+    {{- if .Site.Taxonomies.categories -}}
+    <a href="{{ "categories/" | relLangURL }}" class="taxonomy-link taxonomy-link-categories">
+      All Categories
+    </a>
+    {{- end -}}
+    {{- if .Site.Taxonomies.features -}}
+    <a href="{{ "features/" | relLangURL }}" class="taxonomy-link taxonomy-link-features">
+      All Features
+    </a>
+    {{- end -}}
+  </div>
+</div>
+{{- end -}}
+

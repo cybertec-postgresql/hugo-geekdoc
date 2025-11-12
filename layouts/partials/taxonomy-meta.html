@@ -1,0 +1,52 @@
+{{- $hasTaxonomy := or .Params.tags .Params.categories .Params.features -}}
+{{- if $hasTaxonomy -}}
+<div class="geekdoc-taxonomy-meta">
+  <div>
+    {{- if .Params.tags -}}
+      <div class="taxonomy-group">
+        <strong>Tags</strong>
+        <div class="taxonomy-badges">
+          {{- range .Params.tags -}}
+            <a href="{{ (printf "tags/%s/" (. | urlize)) | relLangURL }}" 
+               class="taxonomy-badge taxonomy-badge-tag"
+               aria-label="View all pages tagged with {{ . }}">
+              {{ . }}
+            </a>
+          {{- end -}}
+        </div>
+      </div>
+    {{- end -}}
+    
+    {{- if .Params.categories -}}
+      <div class="taxonomy-group">
+        <strong>Categories</strong>
+        <div class="taxonomy-badges">
+          {{- range .Params.categories -}}
+            <a href="{{ (printf "categories/%s/" (. | urlize)) | relLangURL }}" 
+               class="taxonomy-badge taxonomy-badge-category"
+               aria-label="View all pages in category {{ . }}">
+              {{ . }}
+            </a>
+          {{- end -}}
+        </div>
+      </div>
+    {{- end -}}
+    
+    {{- if .Params.features -}}
+      <div class="taxonomy-group">
+        <strong>Features</strong>
+        <div class="taxonomy-badges">
+          {{- range .Params.features -}}
+            <a href="{{ (printf "features/%s/" (. | urlize)) | relLangURL }}" 
+               class="taxonomy-badge taxonomy-badge-feature"
+               aria-label="View all pages for feature {{ . }}">
+              {{ . }}
+            </a>
+          {{- end -}}
+        </div>
+      </div>
+    {{- end -}}
+  </div>
+</div>
+{{- end -}}
+
