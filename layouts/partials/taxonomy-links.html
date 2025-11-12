@@ -5,7 +5,7 @@
 */ -}}
 {{- if or .Site.Taxonomies.tags .Site.Taxonomies.categories .Site.Taxonomies.features -}}
 <div class="taxonomy-links-container">
-  <p>{{ i18n "taxonomy_links_browse_by_topic" }}</p>
+  <p class="cx-toc__label">{{ i18n "taxonomy_links_browse_by_topic" }}</p>
   <div class="taxonomy-links">
     {{- if .Site.Taxonomies.tags -}}
     <a href="{{ "tags/" | relLangURL }}" class="taxonomy-link taxonomy-link-tags">
