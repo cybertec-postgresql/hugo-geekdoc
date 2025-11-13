@@ -1,0 +1,81 @@
+{{- /* Date Display - Use Lastmod if available, fallback to Date */ -}}
+{{- $displayDate := .Lastmod -}}
+{{- if $displayDate.IsZero -}}
+  {{- $displayDate = .Date -}}
+{{- end -}}
+
+{{- /* Check if page was updated after original publish date */ -}}
+{{- $isUpdated := false -}}
+{{- if and (not .Date.IsZero) (not .Lastmod.IsZero) -}}
+  {{- $isUpdated = .Lastmod.After (.Date.AddDate 0 0 1) -}}
+{{- end -}}
+
+{{- /* Format datetime attribute - RFC3339/ISO8601 format for proper parsing */ -}}
+{{- $datetimeISO := $displayDate.Format "RFC3339" -}}
+
+{{- /* Format human-readable date - use localized format if available */ -}}
+{{- $dateFormat := "Jan 2, 2006" -}}
+{{- $dateDisplay := $displayDate.Format $dateFormat -}}
+
+{{- if not $displayDate.IsZero -}}
+<span class="flex align-center no-wrap" aria-label="{{ if $isUpdated }}{{ i18n "posts_update_prefix" }} {{ end }}{{ $dateDisplay }}">
+  <svg class="gdoc-icon gdoc_date" aria-hidden="true">
+    <use xlink:href="#gdoc_date"></use>
+  </svg>
+  <span class="gdoc-post__tag">
+    <time datetime="{{ $datetimeISO }}" title="{{ $dateDisplay }}">
+      {{- if $isUpdated -}}
+        <span class="gdoc-post__date-prefix">{{ i18n "posts_update_prefix" }} </span>
+      {{- end -}}
+      <span class="gdoc-post__date-value">{{ $dateDisplay }}</span>
+    </time>
+  </span>
+</span>
+{{- end -}}
+
+{{- /* Reading Time */ -}}
+{{- if gt .ReadingTime 0 -}}
+<span class="flex align-center no-wrap" aria-label="{{ i18n "posts_read_time" .ReadingTime }}">
+  <svg class="gdoc-icon gdoc_timer" aria-hidden="true">
+    <use xlink:href="#gdoc_timer"></use>
+  </svg>
+  <span class="gdoc-post__tag">{{ i18n "posts_read_time" .ReadingTime }}</span>
+</span>
+{{- end -}}
+
+{{- /* Tags Display */ -}}
+{{- $tagCount := 0 -}}
+{{- with .Params.tags -}}
+  {{- range sort . -}}
+    {{- $tagName := . -}}
+    {{- with $.Site.GetPage (printf "/tags/%s" ($tagName | urlize)) -}}
+      {{- if eq $tagCount 0 -}}
+        <span class="flex align-center no-wrap">
+          <svg class="gdoc-icon gdoc_bookmark" aria-hidden="true">
+            <use xlink:href="#gdoc_bookmark"></use>
+          </svg>
+          {{- template "post-tag" dict "name" $tagName "page" . -}}
+        </span>
+      {{- else -}}
+        <span class="flex align-center">
+          {{- template "post-tag" dict "name" $tagName "page" . -}}
+        </span>
+      {{- end -}}
+    {{- end -}}
+    {{- $tagCount = (add $tagCount 1) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Post Tag Template */ -}}
+{{- define "post-tag" -}}
+<span class="gdoc-post__tag gdoc-button gdoc-button--regular">
+  <a
+    class="gdoc-button__link"
+    href="{{ .page.RelPermalink }}"
+    title="{{ i18n "posts_tagged_with" .name }}"
+    aria-label="{{ i18n "posts_tagged_with" .name }}"
+  >
+    {{ .name }}
+  </a>
+</span>
+{{- end -}}
