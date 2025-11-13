@@ -10,6 +10,11 @@
     id="main-content" tabindex="-1"
   >
     {{ if ne .Kind "home" }}{{ partial "page-metadata" . }}{{ end }}
+    
+    {{- partial "taxonomy-meta" . -}}
+    
     {{ partial "utils/content" . }}
+
+    {{- partial "taxonomy-links" . -}}
   </article>
 {{ end }}

@@ -15,12 +15,14 @@
       <div class="gdoc-post__readmore">
         {{ if .Truncated }}
           <a
-            class="flex-inline align-center fake-link"
+            class="taxonomy-link taxonomy-link-readmore flex-inline align-center"
             title="{{ i18n "posts_read_more" }}"
             href="{{ .RelPermalink }}"
           >
             {{ i18n "posts_read_more" }}
-            <i class="gdoc-icon">gdoc_arrow_right_alt</i>
+            <svg class="gdoc-icon" aria-hidden="true">
+              <use xlink:href="#gdoc_arrow_right_alt"></use>
+            </svg>
           </a>
         {{ end }}
       </div>
