@@ -1,0 +1,52 @@
+{{- $hasTaxonomy := or .Params.tags .Params.categories .Params.features -}}
+{{- if $hasTaxonomy -}}
+<div class="geekdoc-taxonomy-meta">
+  <div>
+    {{- if .Params.tags -}}
+      <div class="taxonomy-group">
+        <strong>{{ i18n "taxonomy_meta_tags" }}</strong>
+        <div class="taxonomy-badges">
+          {{- range .Params.tags -}}
+            <a href="{{ (printf "tags/%s/" (. | urlize)) | relLangURL }}" 
+               class="taxonomy-badge taxonomy-badge-tag"
+               aria-label="{{ i18n "taxonomy_meta_view_tagged" . }}">
+              {{ . }}
+            </a>
+          {{- end -}}
+        </div>
+      </div>
+    {{- end -}}
+    
+    {{- if .Params.categories -}}
+      <div class="taxonomy-group">
+        <strong>{{ i18n "taxonomy_meta_categories" }}</strong>
+        <div class="taxonomy-badges">
+          {{- range .Params.categories -}}
+            <a href="{{ (printf "categories/%s/" (. | urlize)) | relLangURL }}" 
+               class="taxonomy-badge taxonomy-badge-category"
+               aria-label="{{ i18n "taxonomy_meta_view_category" . }}">
+              {{ . }}
+            </a>
+          {{- end -}}
+        </div>
+      </div>
+    {{- end -}}
+    
+    {{- if .Params.features -}}
+      <div class="taxonomy-group">
+        <strong>{{ i18n "taxonomy_meta_features" }}</strong>
+        <div class="taxonomy-badges">
+          {{- range .Params.features -}}
+            <a href="{{ (printf "features/%s/" (. | urlize)) | relLangURL }}" 
+               class="taxonomy-badge taxonomy-badge-feature"
+               aria-label="{{ i18n "taxonomy_meta_view_feature" . }}">
+              {{ . }}
+            </a>
+          {{- end -}}
+        </div>
+      </div>
+    {{- end -}}
+  </div>
+</div>
+{{- end -}}
+
