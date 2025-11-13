@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+        version="1.1"
+        viewBox="0 0 20 19.999999"
+        xml:space="preserve"
+        id="cypex"
+        sodipodi:docname="cypex.svg"
+        width="20"
+        height="20"
+        inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:cc="http://creativecommons.org/ns#"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"><defs
+   id="defs11" />
+
+    <metadata
+            id="metadata1"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"/></cc:Work></rdf:RDF></metadata>
+    <g
+            transform="translate(-249.31,-641.52)"
+            id="g11">
+
+	<g
+            id="g12"
+            transform="matrix(0.07368292,0,0,0.07368292,231.94011,596.25781)"><g
+     id="g7">
+
+
+
+
+
+
+
+		<polygon
+                class="st0"
+                points="440.03,858.48 493.6,858.48 407.71,792.76 379.63,813.62 "
+                id="polygon6"/>
+		<polygon
+                class="st0"
+                points="335.11,780.56 363.43,758.89 352.69,750.67 371.45,736.13 400.03,714 493.6,641.52 441.37,641.52 371.45,692.98 342.88,714 293.97,750 "
+                id="polygon7"/>
+	</g>
+        <g
+                id="g10">
+
+		<polygon
+                class="st1"
+                points="301.54,641.52 249.31,641.52 334.87,707.8 363.23,686.92 "
+                id="polygon9"/>
+            <polygon
+                    class="st1"
+                    points="408.19,720.01 379.41,742.3 390.22,750.67 382.33,756.71 379.04,759.22 371.45,765.03 343.25,786.6 249.31,858.48 302.88,858.48 371.45,807.55 399.66,786.6 410.3,778.7 419.19,772.1 448.94,750 "
+                    id="polygon10"/>
+	</g></g>
+</g>
+</svg>

@@ -1,4 +1,82 @@
-# Geekdoc
+# CYBERTEC Geekdoc
+
+A CYBERTEC themed fork of [geekdoc](https://github.com/thegeeklab/hugo-geekdoc), a Hugo theme made for documentation.
+
+---
+
+## Requirements
+
+- [`go`](https://go.dev/doc/install)
+- [`hugo`](https://gohugo.io/installation/)
+
+## Usage
+
+Initialize a new hugo site:
+
+```shell
+hugo new site <site-name>
+cd <site-name>
+```
+
+Initialize the site as a go module:
+
+```shell
+hugo mod init github.com/cybertec-postgresql/<repository-name>
+```
+
+Add the following to your `hugo.toml` to use this theme, including functional code-highlighting:
+
+```toml
+# hugo.toml
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[module]
+[[module.imports]]
+path = 'github.com/cybertec-postgresql/hugo-geekdoc'
+```
+
+Fetch the module
+
+```shell
+hugo mod get -u
+```
+
+Build your page
+```shell
+hugo --minify
+# You may optionally overwrite the `baseURL`
+hugo --minify -b "/docs/"
+```
+
+## Update
+
+To retrieve the latest version of this theme, simply run
+
+```shell
+hugo mod get -u
+hugo mod tidy
+```
+
+## Development
+
+The fork and source code is located inside the `dev` branch. On push, a GitHub Actions workflow will build and push the release to the `main` branch.
+
+### Sync fork
+
+```
+git checkout dev
+git remote add upstream https://github.com/thegeeklab/hugo-geekdoc
+git fetch upstream
+git rebase upstream/main
+git push --force
+```
+
+---
+
+The contents below are from the original Geekdoc README.
+
+---
 
 [![Build Status](https://ci.thegeeklab.de/api/badges/thegeeklab/hugo-geekdoc/status.svg)](https://ci.thegeeklab.de/repos/thegeeklab/hugo-geekdoc)
 [![Hugo Version](https://img.shields.io/badge/hugo-0.124-blue.svg)](https://gohugo.io)

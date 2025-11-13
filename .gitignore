@@ -1,4 +1,5 @@
 # local environments
+.idea
 .swp
 .env*
 /dist/
@@ -15,9 +16,8 @@ VERSION
 exampleSite/content/de
 
 # auto-generated files
-/data/
+/data/assets.json
 /static/
-/assets/sprites/
 /resources/
 /exampleSite/resources/
 /exampleSite/data/sprites/
