@@ -9,7 +9,7 @@
       {{- if gt (len .Pages) 0 -}}
         <p class="taxonomy-terms-count" aria-live="polite">
           {{- $total := len .Pages -}}
-          {{- printf "%d %s" $total (cond (eq $total 1) "term" "terms") -}}
+          {{- i18n "taxonomy_terms_count" $total -}}
         </p>
       {{- end -}}
     </header>
@@ -29,7 +29,7 @@
             <a 
               href="{{ .RelPermalink }}" 
               class="taxonomy-term-card__link"
-              aria-label="View all pages for {{ partial "utils/title" . }}"
+              aria-label="{{ i18n "taxonomy_terms_view_all_pages" (partial "utils/title" .) }}"
             >
               <header class="taxonomy-term-card__header">
                 <h2 class="taxonomy-term-card__title" id="term-{{ .Slug }}">
@@ -44,7 +44,7 @@
                   <p class="taxonomy-term-card__description">{{ $latest.Summary | plainify | truncate 120 }}</p>
                 {{- else -}}
                   <p class="taxonomy-term-card__description taxonomy-term-card__description--empty">
-                    No description available
+                    {{ i18n "taxonomy_terms_no_description" }}
                   </p>
                 {{- end -}}
               </div>
@@ -53,16 +53,13 @@
                 <div class="taxonomy-term-card__meta">
                   <span 
                     class="taxonomy-term-card__count"
-                    aria-label="{{ $pageCount }} {{ cond (eq $pageCount 1) "page" "pages" }}"
+                    aria-label="{{ i18n "taxonomy_terms_page_count" $pageCount }}"
                   >
                     <svg class="gdoc-icon gdoc_tag" aria-hidden="true">
                       <use xlink:href="#gdoc_tag"></use>
                     </svg>
                     <span class="taxonomy-term-card__count-text">
-                      {{- $pageCount -}}
-                      <span class="taxonomy-term-card__count-label">
-                        {{- cond (eq $pageCount 1) "page" "pages" -}}
-                      </span>
+                      {{- i18n "taxonomy_terms_page_count" $pageCount -}}
                     </span>
                   </span>
 
@@ -72,7 +69,7 @@
                         <use xlink:href="#gdoc_star"></use>
                       </svg>
                       <span class="taxonomy-term-card__latest-text">
-                        Latest: 
+                        {{ i18n "taxonomy_terms_latest_prefix" }} 
                         <span class="taxonomy-term-card__latest-title">
                           {{- partial "utils/title" $latest | truncate 40 -}}
                         </span>
@@ -96,9 +93,9 @@
         <svg class="taxonomy-terms-empty__icon" aria-hidden="true">
           <use xlink:href="#gdoc_tag"></use>
         </svg>
-        <h2 class="taxonomy-terms-empty__title">No terms found</h2>
+        <h2 class="taxonomy-terms-empty__title">{{ i18n "taxonomy_terms_empty_title" }}</h2>
         <p class="taxonomy-terms-empty__description">
-          There are currently no {{ .Data.Plural }} available.
+          {{ i18n "taxonomy_terms_empty_description" .Data.Plural }}
         </p>
       </div>
     {{- end -}}

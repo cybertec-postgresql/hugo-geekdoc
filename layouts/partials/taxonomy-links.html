@@ -5,21 +5,21 @@
 */ -}}
 {{- if or .Site.Taxonomies.tags .Site.Taxonomies.categories .Site.Taxonomies.features -}}
 <div class="taxonomy-links-container">
-  <p>Browse Documentation by Topic:</p>
+  <p>{{ i18n "taxonomy_links_browse_by_topic" }}</p>
   <div class="taxonomy-links">
     {{- if .Site.Taxonomies.tags -}}
     <a href="{{ "tags/" | relLangURL }}" class="taxonomy-link taxonomy-link-tags">
-      All Tags
+      {{ i18n "taxonomy_links_all_tags" }}
     </a>
     {{- end -}}
     {{- if .Site.Taxonomies.categories -}}
     <a href="{{ "categories/" | relLangURL }}" class="taxonomy-link taxonomy-link-categories">
-      All Categories
+      {{ i18n "taxonomy_links_all_categories" }}
     </a>
     {{- end -}}
     {{- if .Site.Taxonomies.features -}}
     <a href="{{ "features/" | relLangURL }}" class="taxonomy-link taxonomy-link-features">
-      All Features
+      {{ i18n "taxonomy_links_all_features" }}
     </a>
     {{- end -}}
   </div>

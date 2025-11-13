@@ -54,3 +54,36 @@ pagination_page_state: "{{ .PageNumber }}/{{ .TotalPages }}"
 
 custom_product_of_cybertec: Ein Produkt von CYBERTEC
 custom_support_button: Support
+
+# Taxonomy Terms
+taxonomy_terms_count:
+  one: "{{ . }} Begriff"
+  other: "{{ . }} Begriffe"
+taxonomy_terms_view_all_pages: "Alle Seiten für {{ . }} anzeigen"
+taxonomy_terms_no_description: Keine Beschreibung verfügbar
+taxonomy_terms_page_count:
+  one: "{{ . }} Seite"
+  other: "{{ . }} Seiten"
+taxonomy_terms_latest_prefix: 'Neueste:'
+taxonomy_terms_empty_title: Keine Begriffe gefunden
+taxonomy_terms_empty_description: "Derzeit sind keine {{ . }} verfügbar."
+
+# Taxonomy Links
+taxonomy_links_browse_by_topic: "Dokumentation nach Thema durchsuchen:"
+taxonomy_links_all_tags: Alle Tags
+taxonomy_links_all_categories: Alle Kategorien
+taxonomy_links_all_features: Alle Features
+
+# Taxonomy Meta
+taxonomy_meta_tags: Tags
+taxonomy_meta_categories: Kategorien
+taxonomy_meta_features: Features
+taxonomy_meta_view_tagged: "Alle Seiten mit Tag '{{ . }}' anzeigen"
+taxonomy_meta_view_category: "Alle Seiten in Kategorie '{{ . }}' anzeigen"
+taxonomy_meta_view_feature: "Alle Seiten für Feature '{{ . }}' anzeigen"
+
+# Accessibility & UI
+skip_to_main_content: Zum Hauptinhalt springen
+
+# Shortcodes
+shortcode_expand_default: Erweitern
