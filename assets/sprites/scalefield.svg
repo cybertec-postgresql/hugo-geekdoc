@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   id="scalefield"
+   x="0px"
+   y="0px"
+   viewBox="0 0 20 19.999999"
+   xml:space="preserve"
+   sodipodi:docname="scalefield.svg"
+   width="20"
+   height="20"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs16" /><sodipodi:namedview
+   id="namedview16"
+   borderopacity="0.25"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="29.592419"
+   inkscape:cx="11.117712"
+   inkscape:cy="12.756646"
+   inkscape:window-width="1920"
+   inkscape:window-height="1043"
+   inkscape:window-x="3840"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="scalefield" />
+<g
+   id="g16"
+   transform="matrix(0.89982143,0,0,0.89982143,1.0015487,1.0013624)">
+	
+		<linearGradient
+   id="SVGID_1_"
+   gradientUnits="userSpaceOnUse"
+   x1="8.79"
+   y1="71.220001"
+   x2="52.759998"
+   y2="71.220001"
+   gradientTransform="matrix(0.2121212,0,0,-0.2121212,4.4782347,20.448485)">
+		<stop
+   offset="0"
+   id="stop1" />
+		<stop
+   offset="1"
+   id="stop2" />
+	</linearGradient>
+	
+	<g
+   id="g1"
+   transform="translate(-0.078235,-0.00151413)"><path
+     class="st0"
+     d="M 13.811568,0.46666662 V 10.69091 h 1.866667 V 0.46666662 C 15.678235,0.21212119 15.466114,0 15.211568,0 H 14.278235 C 14.002477,0 13.811568,0.21212119 13.811568,0.46666662 Z M 10.078235,2.4393936 V 10.69091 h 1.866666 V 2.4393936 c 0,-0.2545453 -0.212121,-0.4666665 -0.466666,-0.4666665 h -0.933333 c -0.275758,0 -0.466667,0.2121212 -0.466667,0.4666665 z M 6.3449016,4.5393935 V 10.69091 H 8.211568 V 4.5393935 c 0,-0.2545454 -0.2121212,-0.4666666 -0.4666666,-0.4666666 H 6.8115681 c -0.2545454,0 -0.4666665,0.2121212 -0.4666665,0.4666666 z"
+     id="path2" /><g
+     id="g7"
+     transform="matrix(0.21212119,0,0,0.21212119,4.478235,0)">
+		<rect
+   x="35.200001"
+   y="50.400002"
+   class="st1"
+   width="8.8000002"
+   height="8.8000002"
+   id="rect2" />
+		<rect
+   x="17.6"
+   y="50.400002"
+   class="st1"
+   width="8.8000002"
+   height="8.8000002"
+   id="rect3" />
+		<rect
+   y="50.400002"
+   class="st1"
+   width="8.8000002"
+   height="8.8000002"
+   id="rect4"
+   x="0" />
+		<rect
+   x="17.6"
+   y="67.900002"
+   class="st1"
+   width="8.8000002"
+   height="8.8000002"
+   id="rect5" />
+		<rect
+   y="67.900002"
+   class="st1"
+   width="8.8000002"
+   height="8.8000002"
+   id="rect6"
+   x="0" />
+		<rect
+   y="85.5"
+   class="st1"
+   width="8.8000002"
+   height="8.8000002"
+   id="rect7"
+   x="0" />
+	</g></g>
+	
+</g>
+</svg>

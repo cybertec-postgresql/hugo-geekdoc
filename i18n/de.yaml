@@ -3,7 +3,7 @@ edit_page: Seite bearbeiten
 
 nav_navigation: Navigation
 nav_tags: Tags
-nav_more: Weitere
+nav_more: Weiteres
 nav_top: Nach oben
 
 form_placeholder_search: Suchen
@@ -54,3 +54,5 @@ pagination_page_next: weiter
 pagination_page_state: "{{ .PageNumber }}/{{ .TotalPages }}"
 
 video_unsupported: Ihr Browser unterstützt das Video-Tag nicht.
+custom_product_of_cybertec: Ein Produkt von CYBERTEC
+custom_support_button: Support

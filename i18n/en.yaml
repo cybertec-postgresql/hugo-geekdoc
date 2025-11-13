@@ -54,3 +54,5 @@ pagination_page_next: next
 pagination_page_state: "{{ .PageNumber }}/{{ .TotalPages }}"
 
 video_unsupported: Your browser does not support the video tag.
+custom_product_of_cybertec: A product of CYBERTEC
+custom_support_button: Support

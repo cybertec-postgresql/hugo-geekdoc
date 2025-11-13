@@ -21,6 +21,7 @@ local*
 dist
 src
 build
+images
 renovate*
 resources
 CONTRIBUTING.md
