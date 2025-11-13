@@ -9,10 +9,14 @@
     class="gdoc-markdown gdoc-markdown__align--{{ default "left" (.Page.Params.geekdocAlign | lower) }}"
     id="main-content" tabindex="-1"
   >
+    <h1>{{ partial "utils/title" . }}</h1>
     {{ if ne .Kind "home" }}{{ partial "page-metadata" . }}{{ end }}
+    {{ partial "page-metadata" . }}
     
-    {{- partial "taxonomy-meta" . -}}
+    <!-- {{- partial "taxonomy-meta" . -}} -->
     
     {{ partial "utils/content" . }}
+
+    {{- partial "taxonomy-links" . -}}
   </article>
 {{ end }}
