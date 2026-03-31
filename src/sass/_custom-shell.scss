@@ -73,13 +73,12 @@ body.gdoc-layout--custom {
 
   .cx-page-bg-art {
     position: fixed;
-    top: -37%;
+    top: -27%;
     right: -20%;
     width: min(50vw, 650px);
     max-width: 650px;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.5;
     fill: var(--header-background);
   }
 
