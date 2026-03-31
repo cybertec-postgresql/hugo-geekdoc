@@ -1,0 +1,170 @@
+body.gdoc-layout--custom {
+  font-family: "DM Sans", sans-serif;
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--cx-accent) 10%, transparent), transparent 55%),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--cx-accent-soft) 8%, transparent), transparent 55%),
+    var(--body-background);
+  color: var(--body-font-color);
+  min-height: 100vh;
+  overflow-y: auto;
+
+  .wrapper {
+    background: transparent;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gdoc-sprite-sheet {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .container.gdoc-main {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  main.gdoc-main {
+    display: grid !important;
+    grid-template-columns: var(--cx-sidebar-width) minmax(0, 1fr) var(--cx-toc-width) !important;
+    max-width: none !important;
+    align-items: start;
+    gap: 0;
+    min-height: calc(100vh - var(--cx-header-total));
+    height: auto;
+    overflow: visible;
+    flex: 1 1 auto;
+  }
+
+  .gdoc-main > * {
+    min-width: 0;
+  }
+
+  .gdoc-nav {
+    grid-column: 1;
+    position: sticky;
+    top: var(--cx-header-total);
+    height: calc(100vh - var(--cx-header-total));
+    overflow-y: auto;
+    border-right: 1px solid var(--cx-border);
+    background: var(--cx-surface);
+    padding: 14px 0 18px;
+    width: var(--cx-sidebar-width) !important;
+  }
+
+  .gdoc-page {
+    grid-column: 2;
+    min-width: 0;
+    background-color: var(--cx-surface);
+    position: relative;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+    width: 100% !important;
+    height: calc(100vh - var(--cx-header-total));
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .cx-page-bg-art {
+    position: fixed;
+    top: -27%;
+    right: -20%;
+    width: min(50vw, 650px);
+    max-width: 650px;
+    pointer-events: none;
+    z-index: 0;
+    fill: var(--header-background);
+  }
+
+  .cx-page-bg-art svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    --cx-circle-fill: var(--header-background);
+  }
+
+  .cx-page-bg-art svg .b,
+  .cx-page-bg-art svg .d,
+  .cx-page-bg-art svg .f,
+  .cx-page-bg-art svg .g {
+    fill: var(--cx-circle-fill) !important;
+  }
+
+  .gdoc-page > :not(.cx-page-bg-art) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cx-toc-panel {
+    grid-column: 3;
+    position: sticky;
+    top: var(--cx-header-total);
+    height: calc(100vh - var(--cx-header-total));
+    overflow-y: auto;
+    border-left: 1px solid var(--cx-border-soft);
+    background: var(--cx-surface);
+    padding: 16px 0 20px;
+    width: var(--cx-toc-width) !important;
+  }
+
+  .gdoc-nav::-webkit-scrollbar,
+  .cx-toc-panel::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .gdoc-nav::-webkit-scrollbar-thumb,
+  .cx-toc-panel::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--accent-color) 35%, transparent);
+    border-radius: 999px;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--body-background) 80%, transparent);
+  }
+
+  .gdoc-nav::-webkit-scrollbar-track,
+  .cx-toc-panel::-webkit-scrollbar-track {
+    background: color-mix(in srgb, var(--body-background) 85%, transparent);
+  }
+
+  .gdoc-page::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .gdoc-page::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--accent-color) 30%, transparent);
+    border-radius: 999px;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--cx-surface) 85%, transparent);
+  }
+
+  .gdoc-page::-webkit-scrollbar-track {
+    background: color-mix(in srgb, var(--cx-surface) 90%, transparent);
+  }
+
+  /* Footer styling for custom layout (light + dark harmony) */
+  .gdoc-footer {
+    background:
+      radial-gradient(circle at top left, color-mix(in srgb, var(--footer-background) 40%, transparent), transparent 55%),
+      radial-gradient(circle at top right, color-mix(in srgb, var(--footer-background) 30%, transparent), transparent 55%),
+      var(--footer-background);
+    color: var(--footer-font-color);
+    border-top: 1px solid color-mix(in srgb, var(--footer-font-color) 10%, transparent);
+  }
+
+  .gdoc-footer__line {
+    justify-content: space-between;
+  }
+}
+
+:root[color-theme="dark"] body.gdoc-layout--custom {
+  .cx-page-bg-art {
+    fill: var(--cx-accent);
+  }
+
+  .cx-page-bg-art svg {
+    --cx-circle-fill: var(--cx-accent);
+  }
+}

@@ -7,7 +7,6 @@
     --ci-color-success: #009688;
     --ci-color-warning: #ffb300;
     --ci-color-error1: #cc3333;
-    --ci-color-error2: #f52222;
     --ci-lightest-of-blues: #eaf4ff;
     --ci-color-white: #ffffff;
 
@@ -16,9 +15,10 @@
     --custom-color-heading-color: var(--ci-color-primary);
     --custom-footer-link-color: var(--ci-color-white);
     --custom-header-height: 80px;
-    --custom-header-margin: 2rem;
+    --custom-header-margin: 1rem;
     --custom-link-color: var(--ci-color-tertiary);
     --custom-paper-color: #ffffff;
+
     /* Taxonomy Design System - Using CI Colors */
     --taxonomy-tag-color: var(--ci-color-secondary);
     --taxonomy-category-color: var(--ci-color-success);
@@ -57,6 +57,7 @@
     --custom-paper-color: var(--ci-color-white);
     --footer-background: var(--ci-color-primary);
     --header-background: var(--ci-color-primary);
+
     /* Taxonomy Light Mode Colors */
     --taxonomy-bg-tag: rgba(78, 193, 236, 0.1);
     --taxonomy-bg-category: rgba(0, 150, 136, 0.1);
@@ -88,6 +89,7 @@
         --custom-paper-color: var(--ci-color-white);
         --footer-background: var(--ci-color-primary);
         --header-background: var(--ci-color-primary);
+
         /* Taxonomy Light Mode Colors */
         --taxonomy-bg-tag: rgba(78, 193, 236, 0.1);
         --taxonomy-bg-category: rgba(0, 150, 136, 0.1);
@@ -105,19 +107,20 @@
         --taxonomy-border-card: var(--custom-paper-color);
         --taxonomy-heading-primary: var(--custom-color-heading-color);
         --taxonomy-link-color: var(--custom-link-color);
-        --taxonomy-meta-filter-brightness: 0.96;
-    }
+    --taxonomy-meta-filter-brightness: 0.96;
+}
 }
 
 
 /* Dark mode (modify both object at the same time) */
 :root[color-theme="dark"] {
     --accent-color: unset;
-    --body-background: #1e2022;
+    --body-background: #020617;
     --custom-color-heading-color-alternative: var(--ci-color-secondary);
     --custom-color-heading-color: var(--ci-color-white);
-    --custom-paper-color: #181a1b;
-    --header-background: var(--ci-color-primary);
+    --custom-paper-color: #020617;
+    --header-background: #020617;
+
     /* Taxonomy Dark Mode Colors */
     --taxonomy-bg-tag: rgba(78, 193, 236, 0.15);
     --taxonomy-bg-category: rgba(0, 150, 136, 0.15);
@@ -140,6 +143,7 @@
     --taxonomy-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
     --taxonomy-shadow-md: 0 2px 20px -10px rgba(0, 0, 0, 0.5);
     --taxonomy-shadow-lg: 0 4px 24px -12px rgba(0, 0, 0, 0.6);
+
     /* Fix the $$ highlighting */
     .chroma .err {
         color: inherit;
@@ -155,6 +159,7 @@
         --custom-color-heading-color: var(--ci-color-white);
         --custom-paper-color: #181a1b;
         --header-background: var(--ci-color-primary);
+
         /* Taxonomy Dark Mode Colors */
         --taxonomy-bg-tag: rgba(78, 193, 236, 0.15);
         --taxonomy-bg-category: rgba(0, 150, 136, 0.15);
@@ -177,6 +182,7 @@
         --taxonomy-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
         --taxonomy-shadow-md: 0 2px 20px -10px rgba(0, 0, 0, 0.5);
         --taxonomy-shadow-lg: 0 4px 24px -12px rgba(0, 0, 0, 0.6);
+
         /* Fix the $$ highlighting */
         .chroma .err {
             color: inherit;
@@ -296,11 +302,19 @@ main {
 }
 
 /* Add a border radius and drop shadow to the main components */
-.gdoc-markdown, .gdoc-nav--main, .gdoc-nav--more {
-    padding: 0 2rem 0.5rem 2rem;
+.gdoc-markdown {
+    padding: 0 2rem 0.5rem;
+}
+.gdoc-nav--more {
+    padding: 0 0.5rem 0.5rem 0.5rem;
     border-radius: var(--custom-border-radius);
-    border: 1px solid var(--custom-paper-color);
-    box-shadow: 0 2px 20px -10px rgba(64, 66, 74, 0.2);
+    /* border: 1px solid var(--custom-paper-color);
+    box-shadow: 0 2px 20px -10px rgba(64, 66, 74, 0.2); */
+}
+.gdoc-nav--main {
+    padding: 0;
+    /* border-right: 1px solid var(--custom-paper-color);
+    box-shadow: 0 2px 20px -10px rgba(64, 66, 74, 0.2); */
 }
 
 /* Ensure proper fit between markdown title and body */
@@ -310,8 +324,8 @@ main {
 }
 
 /* Add paper background to main components */
-.gdoc-markdown, .gdoc-nav--main, .gdoc-search__input, .gdoc-search__list, .gdoc-page__header, .gdoc-language__list, .gdoc-nav--more {
-    background-color: var(--custom-paper-color);
+.gdoc-markdown, .gdoc-nav--main, .gdoc-search__input, .gdoc-page__header, .gdoc-language__list, .gdoc-nav--more {
+    background-color: transparent;
 }
 
 /* Use custom CI colors for warning */
@@ -366,18 +380,13 @@ h6 {
     color: var(--custom-link-color);
 }
 
-/* Add a blue background and the big-data-circle to each page title */
+/* Keep title spacing/typography, without background image */
 .gdoc-markdown__title {
     padding-top: 0;
     padding-bottom: 0;
     margin-bottom: 0;
-    background-color: var(--ci-color-primary);
-
-    background-image: linear-gradient(var(--ci-color-primary), var(--ci-color-primary)), url(img/big-data-circle.svg);
-    background-size: auto, 50% 650px;
-    background-repeat: no-repeat;
+    background-color: transparent;
     min-height: 150px;
-    background-position: 140% -300px;
     border-top-left-radius: var(--custom-border-radius);
     border-top-right-radius: var(--custom-border-radius);
 
@@ -386,7 +395,7 @@ h6 {
     justify-content: center;
 
     h1 {
-        color: var(--ci-color-white);
+        color: var(--custom-color-heading-color);
         margin: 0 2rem 0 2rem;
     }
 }
@@ -579,16 +588,6 @@ h6 {
     height: 100%;
     background: var(--taxonomy-heading-primary);
     z-index: 1;
-}
-
-.taxonomy-links-container p {
-    color: var(--taxonomy-heading-primary);
-    font-size: 0.9375rem;
-    margin-bottom: var(--taxonomy-spacing-md);
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    position: relative;
-    z-index: 2;
 }
 
 .taxonomy-links {
@@ -1076,6 +1075,7 @@ h6 {
     outline: 3px solid var(--taxonomy-border-accent);
     outline-offset: 3px;
 }
+
 /* Customize the footer */
 .gdoc-footer {
     display: flex;

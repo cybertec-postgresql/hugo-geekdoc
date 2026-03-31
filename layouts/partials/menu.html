@@ -1,9 +1,9 @@
-<nav>
-  {{ partial "search" . }}
-
-
+<nav aria-label="{{ i18n "nav_navigation" }}">
+  {{ if not (default false .Site.Params.geekdocCustomLayout) }}
+    {{ partial "search" . }}
+  {{ end }}
   <section class="gdoc-nav--main">
-    <h4>{{ i18n "nav_navigation" }}</h4>
+    <!-- <h4>{{ i18n "nav_navigation" }}</h4> -->
     {{ if .Site.Params.geekdocMenuBundle }}
       {{ partial "menu-bundle" (dict "current" . "source" .Site.Data.menu.main.main) }}
     {{ else }}
@@ -35,10 +35,12 @@
   {{ end }}
 
 
-  <section class="gdoc-nav--more">
-    {{ if .Site.Data.menu.more.more }}
-      <h4>{{ i18n "nav_more" }}</h4>
-      {{ partial "menu-bundle" (dict "current" . "source" .Site.Data.menu.more.more) }}
-    {{ end }}
-  </section>
+  {{ if not (default false .Site.Params.geekdocCustomLayout) }}
+    <section class="gdoc-nav--more">
+      {{ if .Site.Data.menu.more.more }}
+        <h4>{{ i18n "nav_more" }}</h4>
+        {{ partial "menu-bundle" (dict "current" . "source" .Site.Data.menu.more.more) }}
+      {{ end }}
+    </section>
+  {{ end }}
 </nav>

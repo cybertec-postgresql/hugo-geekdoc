@@ -47,6 +47,19 @@
   media="all"
 />
 
+{{- if default false .Site.Params.geekdocCustomLayout }}
+<link
+  rel="preload"
+  href="{{ index (index .Site.Data.assets "custom.scss") "src" | relURL }}"
+  as="style"
+/>
+<link
+  rel="stylesheet"
+  href="{{ index (index .Site.Data.assets "custom.scss") "src" | relURL }}"
+  media="all"
+/>
+{{- end }}
+
 {{- with .OutputFormats.Get "html" }}
   {{ printf `<link href=%q rel=%q type=%q />` .Permalink .Rel .MediaType.Type | safeHTML }}
 {{- end }}

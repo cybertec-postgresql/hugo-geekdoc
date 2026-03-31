@@ -1,7 +1,8 @@
-import groupBy from "lodash/groupBy.js"
-import truncate from "lodash/truncate.js"
+import _ from "lodash"
 import { Document, Charset } from "flexsearch"
 import { Validator } from "@cfworker/json-schema"
+
+const { groupBy, truncate } = _
 
 document.addEventListener("DOMContentLoaded", function () {
   const input = document.querySelector("#gdoc-search-input")

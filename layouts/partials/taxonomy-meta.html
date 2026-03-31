@@ -1,10 +1,12 @@
 {{- $hasTaxonomy := or .Params.tags .Params.categories .Params.features -}}
 {{- if $hasTaxonomy -}}
+
 <div class="geekdoc-taxonomy-meta">
   <div>
     {{- if .Params.tags -}}
+      <div class="cx-toc__divider"></div>
       <div class="taxonomy-group">
-        <strong>{{ i18n "taxonomy_meta_tags" }}</strong>
+        <p class="cx-toc__label">{{ i18n "taxonomy_meta_tags" }}</p>
         <div class="taxonomy-badges">
           {{- range .Params.tags -}}
             <a href="{{ (printf "tags/%s/" (. | urlize)) | relLangURL }}" 
@@ -18,8 +20,9 @@
     {{- end -}}
     
     {{- if .Params.categories -}}
+      <div class="cx-toc__divider"></div>
       <div class="taxonomy-group">
-        <strong>{{ i18n "taxonomy_meta_categories" }}</strong>
+        <p class="cx-toc__label">{{ i18n "taxonomy_meta_categories" }}</p>
         <div class="taxonomy-badges">
           {{- range .Params.categories -}}
             <a href="{{ (printf "categories/%s/" (. | urlize)) | relLangURL }}" 
@@ -33,8 +36,9 @@
     {{- end -}}
     
     {{- if .Params.features -}}
+      <div class="cx-toc__divider"></div>
       <div class="taxonomy-group">
-        <strong>{{ i18n "taxonomy_meta_features" }}</strong>
+        <p class="cx-toc__label">{{ i18n "taxonomy_meta_features" }}</p>
         <div class="taxonomy-badges">
           {{- range .Params.features -}}
             <a href="{{ (printf "features/%s/" (. | urlize)) | relLangURL }}" 

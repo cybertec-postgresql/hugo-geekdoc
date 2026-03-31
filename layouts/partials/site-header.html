@@ -31,6 +31,10 @@
         </div>
       </a>
     </div>
+    {{ if default false .Root.Site.Params.geekdocCustomLayout }}
+      {{ partial "search" .Root }}
+    {{ end }}
+
     <div class="gdoc-menu-header flex gap-16">
       <span class="gdoc-menu-header__items">
         {{ if .Root.Site.Data.menu.extra.header }}
@@ -53,14 +57,16 @@
           </svg>
         </span>
 
-        <span class="gdoc-menu-header__home">
+        {{ if not (default false .Root.Site.Params.geekdocCustomLayout) }}
+          <span class="gdoc-menu-header__home">
           <a href="{{ .Root.Site.Home.Permalink }}" class="gdoc-header__link">
             <svg class="gdoc-icon gdoc_home">
               <title>{{ i18n "button_homepage" }}</title>
               <use xlink:href="#gdoc_home"></use>
             </svg>
           </a>
-        </span>
+          </span>
+        {{ end }}
 
         {{ partial "language" .Root }}
       </span>
@@ -73,13 +79,6 @@
         <label for="menu-header-control">
           <div tabindex="0" role="button" aria-pressed="false">
             <input type="checkbox" class="hidden" id="menu-header-control" />
-
-        <span class="gdoc-support__button">
-          <a href="https://cybertec.atlassian.net/servicedesk/customer/portals" target="_blank" rel="noopener noreferrer">{{ i18n "custom_support_button" }}</a>
-        </span>
-
-        <span class="gdoc-menu-header__control">
-          <label for="menu-header-control">
             <svg class="gdoc-icon gdoc_keyboard_arrow_right">
               <use xlink:href="#gdoc_keyboard_arrow_right"></use>
               <title>{{ i18n "button_menu_close" }}</title>

@@ -1,0 +1,175 @@
+body.gdoc-layout--custom {
+  .cx-toc__label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--cx-text-muted);
+    padding: 0 16px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .cx-toc-panel nav ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .cx-toc-panel nav a {
+    display: block;
+    padding: 4px 16px;
+    border-left: 2px solid transparent;
+    text-decoration: none;
+    color: var(--cx-text-secondary);
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  .cx-toc-panel nav a:hover {
+    color: var(--cx-text-primary);
+  }
+
+  .cx-toc-panel nav a.active {
+    color: var(--cx-accent);
+    border-left-color: var(--cx-accent);
+    background: var(--cx-accent-glow);
+  }
+
+  .cx-toc__divider {
+    height: 1px;
+    margin: 12px 16px;
+    background: var(--cx-border-soft);
+  }
+
+  .cx-toc__feedback {
+    padding: 0 16px;
+  }
+
+  .cx-toc__feedback p {
+    margin: 0 0 8px;
+    font-size: 12px;
+    color: var(--cx-text-muted);
+  }
+
+  .cx-feedback-btns {
+    display: flex;
+    gap: 6px;
+  }
+
+  .cx-feedback-btn {
+    flex: 1;
+    background: var(--cx-surface);
+    border: 1px solid var(--cx-border-soft);
+    border-radius: 6px;
+    color: var(--cx-text-secondary);
+    font-size: 12px;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .cx-feedback-btn:hover {
+    border-color: var(--cx-accent-soft);
+    color: var(--cx-accent-soft);
+    background: var(--cx-accent-glow);
+  }
+
+  /* Taxonomy meta in right rail */
+  .cx-toc-panel .geekdoc-taxonomy-meta {
+    margin: 14px 0 0;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  .cx-toc-panel .geekdoc-taxonomy-meta::before {
+    display: none;
+  }
+
+  .cx-toc-panel .geekdoc-taxonomy-meta > div {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .cx-toc-panel .taxonomy-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .cx-toc-panel .taxonomy-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 0 16px 4px;
+  }
+
+  .cx-toc-panel .taxonomy-badge {
+    font-size: 11px;
+    border-radius: 999px;
+    padding: 2px 8px;
+  }
+
+  .cx-toc-panel .taxonomy-badge-tag,
+  .cx-toc-panel .taxonomy-badge-category,
+  .cx-toc-panel .taxonomy-badge-feature {
+    box-shadow: none;
+  }
+
+  /* Bottom-anchored taxonomy links container */
+  .cx-toc-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cx-toc-panel nav {
+    flex: 1 1 auto;
+  }
+
+  .cx-toc__bottom {
+    margin-top: auto;
+    padding: 10px 0 0;
+  }
+
+  .cx-toc__bottom .taxonomy-links-container {
+    margin: 0 0 8px;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  .cx-toc__bottom .taxonomy-links-container::before {
+    display: none;
+  }
+
+  .cx-toc__bottom .taxonomy-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    padding: 16px 10px;
+  }
+
+  .cx-toc__bottom .taxonomy-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--cx-text-secondary);
+    text-decoration: none;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--cx-border-soft);
+    background: var(--cx-surface);
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .cx-toc__bottom .taxonomy-link:hover {
+    color: var(--cx-accent);
+    border-color: var(--cx-accent-soft);
+    background: var(--cx-accent-glow);
+  }
+
+  .cx-toc__bottom .taxonomy-link::after {
+    content: "→";
+    font-size: 11px;
+  }
+}

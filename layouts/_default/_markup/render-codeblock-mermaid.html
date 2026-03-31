@@ -1,10 +1,4 @@
-<!-- prettier-ignore-start -->
-{{ if not (.Page.Scratch.Get "mermaid") }}
-  <!-- Include mermaid only first time -->
-  <script defer src="{{ index (index .Page.Site.Data.assets "mermaid.js") "src" | relURL }}"></script>
-  {{ .Page.Scratch.Set "mermaid" true }}
-{{ end }}
-<!-- prettier-ignore-end -->
+{{ partial "mermaid-loader.html" . }}
 
 <pre class="gdoc-mermaid mermaid text-center">
   {{- .Inner -}}

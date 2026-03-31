@@ -1,4 +1,8 @@
 {{- $showAnchor := (and (default true .Page.Params.geekdocAnchor) (default true .Page.Site.Params.geekdocAnchor)) -}}
+{{- $customLayout := default false .Page.Site.Params.geekdocCustomLayout -}}
+{{- if and $customLayout (eq .Level 1) -}}
+  {{- /* In custom layout the page title is rendered in hero; suppress duplicate markdown H1. */ -}}
+{{- else -}}
 
 
 <!-- prettier-ignore-start -->
@@ -25,3 +29,4 @@
 </div>
 {{- end -}}
 <!-- prettier-ignore-end -->
+{{- end -}}

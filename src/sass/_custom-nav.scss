@@ -1,0 +1,185 @@
+:root[color-theme="dark"] body.gdoc-layout--custom {
+  .gdoc-nav {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--cx-surface-alt) 85%, transparent) 0%,
+      color-mix(in srgb, var(--cx-surface) 92%, transparent) 100%
+    );
+  }
+
+  .gdoc-nav--main > h4,
+  .gdoc-nav--more > h4,
+  .gdoc-nav--tags > h2,
+  .cx-nav-section-label {
+    color: var(--cx-text-muted);
+    border-color: color-mix(in srgb, var(--cx-border-soft) 60%, transparent);
+  }
+
+  .gdoc-nav__entry {
+    color: var(--cx-text-secondary) !important;
+  }
+
+  .gdoc-nav__entry:hover {
+    background: color-mix(in srgb, var(--cx-accent-glow) 60%, transparent) !important;
+    color: var(--cx-text-primary) !important;
+  }
+
+  .gdoc-nav__entry.is-active {
+    border-left-color: var(--cx-accent) !important;
+    background: color-mix(in srgb, var(--cx-accent-glow) 75%, transparent) !important;
+    color: var(--cx-text-primary) !important;
+  }
+
+  .gdoc-nav__label:hover,
+  .gdoc-nav__label:hover .gdoc-nav__entry,
+  .gdoc-nav__label:hover .cx-nav-section-label {
+    background: color-mix(in srgb, var(--cx-accent-glow) 60%, transparent) !important;
+    color: var(--cx-text-primary) !important;
+  }
+
+  .gdoc-nav__toggle ~ .gdoc-nav__label .toggle {
+    color: var(--cx-text-muted);
+  }
+}
+
+body.gdoc-layout--custom {
+  .gdoc-nav {
+    padding: 0;
+    background: linear-gradient(180deg, var(--cx-surface-alt) 0%, #f7f9fd 100%);
+  }
+
+  .gdoc-nav nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gdoc-nav--main,
+  .gdoc-nav--more,
+  .gdoc-nav--tags {
+    padding-bottom: 4px;
+  }
+
+  .gdoc-nav nav,
+  .gdoc-nav .gdoc-nav--main,
+  .gdoc-nav .gdoc-nav--more,
+  .gdoc-nav .gdoc-nav--tags {
+    min-width: 0;
+  }
+
+  .gdoc-nav__list,
+  .gdoc-nav__list ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .gdoc-nav__list li,
+  .gdoc-nav__list li::marker {
+    list-style: none !important;
+    content: "" !important;
+  }
+
+  .gdoc-nav--main > h4,
+  .gdoc-nav--more > h4,
+  .gdoc-nav--tags > h2 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cx-text-muted);
+    margin: 8px 20px 6px;
+  }
+
+  .cx-nav-section-label {
+    padding: 12px 20px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cx-text-muted);
+    display: block;
+    border-top: 1px solid var(--cx-border-soft);
+  }
+
+  .gdoc-nav__item {
+    margin: 0;
+  }
+
+  .gdoc-nav__label {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .gdoc-nav__entry {
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    padding: 8px 20px !important;
+    border-radius: 0 10px 10px 0;
+    border-left: 2px solid transparent !important;
+    color: var(--cx-text-secondary) !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    font-weight: 500;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .gdoc-nav__entry:hover {
+    background: var(--cx-accent-glow) !important;
+    color: var(--cx-text-primary) !important;
+  }
+
+  .gdoc-nav__entry::before {
+    content: none;
+  }
+
+  .gdoc-nav .gdoc-nav__list .gdoc-nav__list .gdoc-nav__entry {
+    padding-left: 36px !important;
+    font-size: 13px !important;
+    color: var(--cx-text-muted) !important;
+    font-weight: 450;
+  }
+
+  .gdoc-nav__entry--section {
+    color: var(--cx-text-muted) !important;
+    cursor: default;
+    font-size: 13px !important;
+  }
+
+  .gdoc-nav__entry.is-active {
+    border-left-color: var(--cx-accent) !important;
+    background: var(--cx-accent-glow) !important;
+    color: var(--cx-text-primary) !important;
+    font-weight: 600;
+  }
+
+  // Hover state when moving over the whole collapsible row (label area)
+  .gdoc-nav__label:hover,
+  .gdoc-nav__label:hover .gdoc-nav__entry,
+  .gdoc-nav__label:hover .cx-nav-section-label {
+    background: var(--cx-accent-glow) !important;
+    color: var(--cx-text-primary) !important;
+  }
+
+  .gdoc-nav__toggle ~ .gdoc-nav__label .toggle {
+    color: var(--cx-text-muted);
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+
+  .gdoc-nav__toggle:checked ~ .gdoc-nav__label .gdoc_keyboard_arrow_left {
+    display: none !important;
+  }
+
+  .gdoc-nav__toggle:not(:checked) ~ .gdoc-nav__label .gdoc_keyboard_arrow_down {
+    display: none !important;
+  }
+}
