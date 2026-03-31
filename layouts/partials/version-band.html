@@ -1,0 +1,23 @@
+{{- $releaseSection := .Site.GetPage "section" "release_notes" -}}
+{{- $latestVersion := "latest" -}}
+{{- $latestChangelog := "#" -}}
+{{- if $releaseSection -}}
+  {{- $releasePages := $releaseSection.RegularPages.ByDate.Reverse -}}
+  {{- if gt (len $releasePages) 0 -}}
+    {{- $latestPage := index $releasePages 0 -}}
+    {{- $latestVersion = $latestPage.Title -}}
+    {{- $latestChangelog = $latestPage.RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $version := .Site.Params.docsVersion | default $latestVersion -}}
+{{- $changelogRaw := .Site.Params.changelogURL | default $latestChangelog -}}
+{{- $changelog := $changelogRaw -}}
+{{- if and (not (hasPrefix $changelogRaw "http://")) (not (hasPrefix $changelogRaw "https://")) (not (hasPrefix $changelogRaw "#")) -}}
+  {{- $changelog = urls.JoinPath .Site.BaseURL (strings.TrimPrefix "/" $changelogRaw) -}}
+{{- end -}}
+<div class="cx-version-band">
+  <span class="cx-version-pill">{{ $version }}</span>
+  <span>Latest stable release</span>
+  <a class="cx-version-band__changelog" href="{{ $changelog }}">View changelog -></a>
+</div>

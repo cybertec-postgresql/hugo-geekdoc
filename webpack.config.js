@@ -17,11 +17,11 @@ var config = {
     css: [
       path.resolve("src", "sass", "main.scss"),
       path.resolve("src", "sass", "mobile.scss"),
-      path.resolve("src", "sass", "print.scss")
+      path.resolve("src", "sass", "print.scss"),
+      path.resolve("src", "sass", "custom.scss")
     ],
     main: path.resolve("src", "js", "index.js"),
     colortheme: path.resolve("src", "js", "colorTheme.js"),
-    mermaid: path.resolve("src", "js", "mermaid.js"),
     katex: [path.resolve("src", "js", "katex.js")].concat(
       glob.sync(path.join(nodeModulesPath, "katex", "dist", "fonts", "*.{woff,woff2}"))
     ),
