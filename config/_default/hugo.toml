@@ -7,3 +7,4 @@ tag = "tags"
 
 [params]
 geekdocCollapseAllSections = true
+geekdocCustomLayout = true
