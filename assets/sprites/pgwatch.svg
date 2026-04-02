@@ -1,0 +1,23 @@
+<svg
+        version="1.1"
+        id="pgwatch"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        sodipodi:docname="pgwatch.svg"
+        inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:svg="http://www.w3.org/2000/svg">
+
+    <g
+            inkscape:groupmode="layer"
+            inkscape:label="Image"
+            id="g1">
+        <path
+                d="M 2.1359,7.1331711 C 2.91465,9.2519343 4.48012,12.92421 5.43034,14.968856 L 9.07825,4.0948129 12.00039,10.761463 15.25324,1 H 17.8641 V 2.4170313 H 16.35217 C 14.95361,6.2781155 13.51902,10.426391 12.05532,14.263244 L 9.13123,8.0687324 5.39987,19 Z"
+                id="path1"
+                sodipodi:nodetypes="cccccccccccc"/>
+    </g>
+</svg>

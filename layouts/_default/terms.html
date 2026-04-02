@@ -1,0 +1,103 @@
+{{ define "main" }}
+  <div id="main-content" tabindex="-1" class="taxonomy-terms-page">
+    {{- /* Page Header Section */ -}}
+    <header class="taxonomy-terms-header">
+      <h1 class="taxonomy-terms-title">{{ partial "utils/title" . }}</h1>
+      {{- if .Description -}}
+        <p class="taxonomy-terms-description">{{ .Description }}</p>
+      {{- end -}}
+      {{- if gt (len .Pages) 0 -}}
+        <p class="taxonomy-terms-count" aria-live="polite">
+          {{- $total := len .Pages -}}
+          {{- i18n "taxonomy_terms_count" $total -}}
+        </p>
+      {{- end -}}
+    </header>
+
+    {{- /* Main Content Grid */ -}}
+    {{- if gt (len .Paginator.Pages) 0 -}}
+      <div class="taxonomy-terms-grid" role="list">
+        {{- range .Paginator.Pages.ByTitle -}}
+          {{- $pageCount := len .Pages -}}
+          {{- $latest := index (.Pages.ByDate.Reverse) 0 -}}
+          <article 
+            class="taxonomy-term-card" 
+            role="listitem"
+            aria-labelledby="term-{{ .Slug }}"
+          >
+            {{- /* Clickable Card Link - Entire card is clickable */ -}}
+            <a 
+              href="{{ .RelPermalink }}" 
+              class="taxonomy-term-card__link"
+              aria-label="{{ i18n "taxonomy_terms_view_all_pages" (partial "utils/title" .) }}"
+            >
+              <header class="taxonomy-term-card__header">
+                <h2 class="taxonomy-term-card__title" id="term-{{ .Slug }}">
+                  {{- partial "utils/title" . -}}
+                </h2>
+              </header>
+
+              <div class="taxonomy-term-card__body">
+                {{- if .Description -}}
+                  <p class="taxonomy-term-card__description">{{ .Description | truncate 120 }}</p>
+                {{- else if $latest -}}
+                  <p class="taxonomy-term-card__description">{{ $latest.Summary | plainify | truncate 120 }}</p>
+                {{- else -}}
+                  <p class="taxonomy-term-card__description taxonomy-term-card__description--empty">
+                    {{ i18n "taxonomy_terms_no_description" }}
+                  </p>
+                {{- end -}}
+              </div>
+
+              <footer class="taxonomy-term-card__footer">
+                <div class="taxonomy-term-card__meta">
+                  <span 
+                    class="taxonomy-term-card__count"
+                    aria-label="{{ i18n "taxonomy_terms_page_count" $pageCount }}"
+                  >
+                    <svg class="gdoc-icon gdoc_tag" aria-hidden="true">
+                      <use xlink:href="#gdoc_tag"></use>
+                    </svg>
+                    <span class="taxonomy-term-card__count-text">
+                      {{- i18n "taxonomy_terms_page_count" $pageCount -}}
+                    </span>
+                  </span>
+
+                  {{- if $latest -}}
+                    <span class="taxonomy-term-card__latest">
+                      <svg class="gdoc-icon gdoc_star" aria-hidden="true">
+                        <use xlink:href="#gdoc_star"></use>
+                      </svg>
+                      <span class="taxonomy-term-card__latest-text">
+                        {{ i18n "taxonomy_terms_latest_prefix" }} 
+                        <span class="taxonomy-term-card__latest-title">
+                          {{- partial "utils/title" $latest | truncate 40 -}}
+                        </span>
+                      </span>
+                    </span>
+                  {{- end -}}
+                </div>
+              </footer>
+            </a>
+          </article>
+        {{- end -}}
+      </div>
+
+      {{- /* Pagination */ -}}
+      {{- if gt .Paginator.TotalPages 1 -}}
+        {{- partial "pagination.html" . -}}
+      {{- end -}}
+    {{- else -}}
+      {{- /* Empty State */ -}}
+      <div class="taxonomy-terms-empty" role="status" aria-live="polite">
+        <svg class="taxonomy-terms-empty__icon" aria-hidden="true">
+          <use xlink:href="#gdoc_tag"></use>
+        </svg>
+        <h2 class="taxonomy-terms-empty__title">{{ i18n "taxonomy_terms_empty_title" }}</h2>
+        <p class="taxonomy-terms-empty__description">
+          {{ i18n "taxonomy_terms_empty_description" .Data.Plural }}
+        </p>
+      </div>
+    {{- end -}}
+  </div>
+{{ end }}

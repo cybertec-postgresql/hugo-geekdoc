@@ -1,0 +1,5 @@
+{{ partial "mermaid-loader.html" . }}
+
+<pre class="gdoc-mermaid mermaid{{ with .Get "class" }}{{ printf " %s" . }}{{ end }}">
+  {{- .Inner -}}
+</pre>

@@ -1,0 +1,66 @@
+{{ define "main" }}
+  {{ if default false .Site.Params.geekdocCustomLayout }}
+    <div class="cx-breadcrumb-bar">
+      {{ range .Ancestors.Reverse }}
+        <a href="{{ .RelPermalink }}">{{ partial "utils/title" . }}</a>
+        <span class="cx-sep">›</span>
+      {{ end }}
+      <span class="cx-current">{{ partial "utils/title" . }}</span>
+    </div>
+
+    <section class="cx-doc-hero">
+      <div class="cx-hero-eyebrow">
+        {{ range .Params.categories }}
+          <span class="cx-eyebrow-tag">{{ . }}</span>
+        {{ end }}
+      </div>
+      <h1>{{ partial "utils/title" . }}</h1>
+      <div class="cx-hero-meta">
+        {{ with .Lastmod }}
+          <span>Updated {{ . | time.Format "Jan 2006" }}</span>
+        {{ end }}
+        {{ with .ReadingTime }}
+          <span>{{ . }} min read</span>
+        {{ end }}
+      </div>
+    </section>
+
+    {{ if or .Params.tags .Params.categories }}
+      <div class="cx-tag-row">
+        {{ if .Params.tags }}
+          <span class="cx-tag-label">Tags</span>
+          {{ range .Params.tags }}
+            <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="cx-tag">{{ . }}</a>
+          {{ end }}
+        {{ end }}
+        {{ if .Params.categories }}
+          <span class="cx-tag-label">Category</span>
+          {{ range .Params.categories }}
+            <a href="{{ "/categories/" | relURL }}{{ . | urlize }}" class="cx-tag cx-tag--cat">{{ . }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+    {{ end }}
+
+    <article
+      class="cx-article gdoc-markdown gdoc-markdown__align--{{ default "left" (.Page.Params.geekdocAlign | lower) }}"
+      id="main-content"
+      tabindex="-1"
+    >
+      {{ partial "utils/content" . }}
+    </article>
+  {{ else }}
+    {{ partial "page-header" . }}
+
+    <section class="gdoc-markdown__title">
+      <h1>{{ partial "utils/title" . }}</h1>
+    </section>
+    <article
+      class="gdoc-markdown gdoc-markdown__align--{{ default "left" (.Page.Params.geekdocAlign | lower) }}"
+      id="main-content" tabindex="-1"
+    >
+      {{ partial "page-metadata" . }}
+      {{ partial "utils/content" . }}
+    </article>
+  {{ end }}
+{{ end }}
