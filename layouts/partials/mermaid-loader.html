@@ -13,11 +13,54 @@
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       const darkMode = currentTheme === "dark" || (currentTheme !== "light" && prefersDark);
 
+      const css = getComputedStyle(document.documentElement);
+      const v = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
+
       mermaid.initialize({
         startOnLoad: false,
         flowchart: { useMaxWidth: true },
-        theme: darkMode ? "dark" : "default",
-        themeVariables: { darkMode }
+        theme: "base",
+        themeVariables: {
+          darkMode,
+          fontFamily: v("--cx-font-mono", "monospace"),
+
+          background: v("--cx-surface", "#ffffff"),
+          textColor: v("--cx-text-primary", "#0f1923"),
+          lineColor: v("--cx-text-muted", "#8494a7"),
+
+          primaryColor: v("--cx-surface-alt", "#f7fafd"),
+          primaryTextColor: v("--cx-text-primary", "#0f1923"),
+          primaryBorderColor: v("--cx-accent", "#2d8cf0"),
+          secondaryColor: v("--cx-accent-glow", "#e8f3fe"),
+          secondaryTextColor: v("--cx-text-primary", "#0f1923"),
+          secondaryBorderColor: v("--cx-border", "#e2e8f0"),
+          tertiaryColor: v("--cx-surface-alt", "#f7fafd"),
+          tertiaryTextColor: v("--cx-text-secondary", "#4a5568"),
+          tertiaryBorderColor: v("--cx-border", "#e2e8f0"),
+
+          mainBkg: v("--cx-surface-alt", "#f7fafd"),
+          nodeBorder: v("--cx-accent", "#2d8cf0"),
+          clusterBkg: v("--cx-surface", "#ffffff"),
+          clusterBorder: v("--cx-border", "#e2e8f0"),
+          defaultLinkColor: v("--cx-text-muted", "#8494a7"),
+          edgeLabelBackground: v("--cx-surface-alt", "#f7fafd"),
+
+          actorBkg: v("--cx-surface-alt", "#f7fafd"),
+          actorBorder: v("--cx-accent", "#2d8cf0"),
+          actorTextColor: v("--cx-text-primary", "#0f1923"),
+          actorLineColor: v("--cx-border", "#e2e8f0"),
+          signalColor: v("--cx-text-secondary", "#4a5568"),
+          signalTextColor: v("--cx-text-primary", "#0f1923"),
+          labelBoxBkgColor: v("--cx-tag-bg", "#eef4ff"),
+          labelBoxBorderColor: v("--cx-tag-border", "#c7dcff"),
+          labelTextColor: v("--cx-tag-text", "#1a5fb5"),
+          loopTextColor: v("--cx-text-secondary", "#4a5568"),
+          noteBkgColor: v("--cx-accent-glow", "#e8f3fe"),
+          noteBorderColor: v("--cx-accent", "#2d8cf0"),
+          noteTextColor: v("--cx-text-primary", "#0f1923"),
+          activationBkgColor: v("--cx-surface", "#ffffff"),
+          activationBorderColor: v("--cx-accent", "#2d8cf0")
+        }
       });
 
       const nodes = document.querySelectorAll(".mermaid");

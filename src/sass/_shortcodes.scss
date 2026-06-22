@@ -195,7 +195,15 @@
 
 // {{< mermaid >}}
 .gdoc-mermaid {
+  display: flex;
+  justify-content: center;
   font-family: var(--body-font-family);
+
+  background: var(--code-background);
+  border: defaults.$border-1 solid var(--cx-border, var(--accent-color-lite));
+  border-radius: defaults.$border-radius;
+  padding: defaults.$padding-16;
+  overflow: auto;
 
   // Fix height of mermaid SVG elements (see https://github.com/mermaid-js/mermaid/issues/2481)
   > svg {

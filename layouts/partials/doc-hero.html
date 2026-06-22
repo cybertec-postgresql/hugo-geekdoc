@@ -1,0 +1,35 @@
+{{ partial "breadcrumb-bar" . }}
+
+<section class="cx-doc-hero">
+  <!-- <div class="cx-hero-eyebrow">
+    {{ range .Params.categories }}
+      <span class="cx-eyebrow-tag">{{ . }}</span>
+    {{ end }}
+  </div> -->
+  <h1>{{ partial "utils/title" . }}</h1>
+  <div class="cx-hero-meta">
+    {{ with .Lastmod }}
+      <span>Updated {{ . | time.Format "Jan 2006" }}</span>
+    {{ end }}
+    {{ with .ReadingTime }}
+      <span>{{ . }} min read</span>
+    {{ end }}
+  </div>
+</section>
+
+{{ if or .Params.tags .Params.categories }}
+  <div class="cx-tag-row">
+    {{ if .Params.tags }}
+      <span class="cx-tag-label">Tags</span>
+      {{ range .Params.tags }}
+        <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="cx-tag">{{ . }}</a>
+      {{ end }}
+    {{ end }}
+    {{ if .Params.categories }}
+      <span class="cx-tag-label">Category</span>
+      {{ range .Params.categories }}
+        <a href="{{ "/categories/" | relURL }}{{ . | urlize }}" class="cx-tag cx-tag--cat">{{ . }}</a>
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}

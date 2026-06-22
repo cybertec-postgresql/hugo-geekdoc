@@ -1,28 +1,6 @@
 import "./accessibility.js"
 
 document.addEventListener("DOMContentLoaded", () => {
-  const clipboard = new Clipboard(".clip")
-
-  clipboard.on("success", (e) => {
-    const { trigger, clearSelection } = e
-
-    if (trigger.hasAttribute("data-copy-feedback")) {
-      trigger.classList.add("gdoc-post__codecopy--success", "gdoc-post__codecopy--out")
-      trigger.querySelector(".gdoc-icon.copy").classList.add("hidden")
-      trigger.querySelector(".gdoc-icon.check").classList.remove("hidden")
-
-      setTimeout(() => {
-        trigger.classList.remove("gdoc-post__codecopy--success", "gdoc-post__codecopy--out")
-        trigger.querySelector(".gdoc-icon.copy").classList.remove("hidden")
-        trigger.querySelector(".gdoc-icon.check").classList.add("hidden")
-      }, 3000)
-    }
-
-    clearSelection()
-  })
-
-  document.querySelectorAll(".highlight").forEach(createCopyButton)
-document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".highlight").forEach((highlightDiv) => createCopyButton(highlightDiv))
   initClipboardIfNeeded()
 })
@@ -63,22 +41,22 @@ function initClipboardIfNeeded() {
   import("clipboard").then(({ default: Clipboard }) => {
     const clipboard = new Clipboard(".clip")
 
-    clipboard.on("success", function (e) {
-      const trigger = e.trigger
+    clipboard.on("success", (e) => {
+      const { trigger, clearSelection } = e
 
       if (trigger.hasAttribute("data-copy-feedback")) {
         trigger.classList.add("gdoc-post__codecopy--success", "gdoc-post__codecopy--out")
         trigger.querySelector(".gdoc-icon.copy").classList.add("hidden")
         trigger.querySelector(".gdoc-icon.check").classList.remove("hidden")
 
-        setTimeout(function () {
+        setTimeout(() => {
           trigger.classList.remove("gdoc-post__codecopy--success", "gdoc-post__codecopy--out")
           trigger.querySelector(".gdoc-icon.copy").classList.remove("hidden")
           trigger.querySelector(".gdoc-icon.check").classList.add("hidden")
         }, 3000)
       }
 
-      e.clearSelection()
+      clearSelection()
     })
   })
 }
