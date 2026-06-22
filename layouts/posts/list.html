@@ -12,7 +12,7 @@
         </h1>
       </header>
       <section>
-        {{ .Summary }}
+        {{ .Summary | replaceRE `src="([^"]*)"` (printf `src="%s$1"` (.RelPermalink | absURL)) | safeHTML }}
       </section>
       <div class="gdoc-post__readmore">
         {{ if .Truncated }}
