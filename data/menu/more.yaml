@@ -1,4 +1,3 @@
----
 more:
   - name: CYBERTEC
     icon: "cybertec"
@@ -14,11 +13,11 @@ more:
     external: true
   - name: Migrator
     icon: "migrator"
-    ref: "https://www.cybertec-postgresql.com/en/products/cybertec-migrator/"
+    ref: "https://www.cybertec-postgresql.com/en/products/cybertec-postgresql-migrator/"
     external: true
   - name: Scalefield
     icon: "scalefield"
-    ref: "https://www.cybertec-postgresql.com/en/products/scalefield/"
+    ref: "https://www.cybertec-postgresql.com/en/products/cybertec-scalefield/"
     external: true
   - name: pgwatch
     icon: "pgwatch"

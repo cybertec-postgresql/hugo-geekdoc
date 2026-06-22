@@ -34,19 +34,28 @@ class SRIPlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.done.tap("SRIPlugin", () => {
+    compiler.hooks.afterEmit.tap("SRIPlugin", () => {
       const data = JSON.parse(fs.readFileSync(this.options.sourceFile, "utf8"))
       const outputFile = this.options.outputFile || this.options.sourceFile
       const { algorithm } = this.options
+      const outputPath = compiler.options.output.path || path.join(".", "static")
 
       const calculateSRI = (file) => {
-        const fileContent = fs.readFileSync(path.join(".", "static", file))
+        const filePath = path.join(outputPath, file)
+        if (!fs.existsSync(filePath)) {
+          return null
+        }
+
+        const fileContent = fs.readFileSync(filePath)
         const hash = crypto.createHash(algorithm).update(fileContent).digest("base64")
         return `${algorithm}-${hash}`
       }
 
       Object.keys(data).forEach((key) => {
-        data[key].integrity = calculateSRI(data[key].src)
+        const sri = calculateSRI(data[key].src)
+        if (sri) {
+          data[key].integrity = sri
+        }
       })
 
       fs.writeFileSync(outputFile, JSON.stringify(data, null, 2), { encoding: "utf8", flag: "w" })

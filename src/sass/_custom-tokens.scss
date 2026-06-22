@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap");
+
+:root {
+  /* Light theme defaults */
+  --cx-navy: #0d1b2e;
+  --cx-navy-mid: #152339;
+  --cx-accent: #2d8cf0;
+  --cx-accent-soft: #1a6dbf;
+  --cx-accent-glow: #e8f3fe;
+  --cx-text-primary: #0f1923;
+  --cx-text-secondary: #4a5568;
+  --cx-text-muted: #8494a7;
+  --cx-border: #e2e8f0;
+  --cx-border-soft: #edf2f7;
+  --cx-surface: #ffffff;
+  --cx-surface-alt: #f7fafd;
+  --cx-tag-bg: #eef4ff;
+  --cx-tag-text: #1a5fb5;
+  --cx-tag-border: #c7dcff;
+  --cx-cat-bg: #eef5ea;
+  --cx-cat-text: #2d6a1f;
+  --cx-cat-border: #b8dba6;
+  --cx-font-mono: "DM Mono", "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  --cx-sidebar-width: 260px;
+  --cx-toc-width: 220px;
+  --cx-header-height: 56px;
+  --cx-band-height: 33px;
+  --cx-header-total: calc(var(--cx-header-height) + var(--cx-band-height));
+
+  /* Theme toggle icon colors (light theme) */
+  --cx-icon-brightness-light: #eab308;
+  --cx-icon-brightness-dark: #0ea5e9;
+  --cx-icon-brightness-auto: #6366f1;
+}
+
+/* Dark theme overrides for custom tokens */
+:root[color-theme="dark"] {
+  --cx-navy: #020817;
+  --cx-navy-mid: #020617;
+  --cx-accent: #60a5fa;
+  --cx-accent-soft: #1d4ed8;
+  --cx-accent-glow: rgba(96, 165, 250, 0.14);
+  --cx-text-primary: #e5e7eb;
+  --cx-text-secondary: #cbd5f5;
+  --cx-text-muted: #94a3b8;
+  --cx-border: #1f2933;
+  --cx-border-soft: #111827;
+  --cx-surface: #020617;
+  --cx-surface-alt: #020817;
+  --cx-tag-bg: rgba(96, 165, 250, 0.16);
+  --cx-tag-text: #bfdbfe;
+  --cx-tag-border: rgba(96, 165, 250, 0.4);
+  --cx-cat-bg: rgba(34, 197, 94, 0.12);
+  --cx-cat-text: #bbf7d0;
+  --cx-cat-border: rgba(34, 197, 94, 0.35);
+
+  /* Theme toggle icon colors (dark theme) */
+  --cx-icon-brightness-light: #facc15;
+  --cx-icon-brightness-dark: #38bdf8;
+  --cx-icon-brightness-auto: #a5b4fc;
+}

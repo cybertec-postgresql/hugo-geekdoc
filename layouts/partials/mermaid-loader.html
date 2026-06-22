@@ -1,0 +1,39 @@
+<!-- prettier-ignore-start -->
+{{ if not (.Page.Scratch.Get "mermaid") }}
+  {{ .Page.Scratch.Set "mermaid" true }}
+  <script type="module">
+    (async function () {
+      if (window.__gdocMermaidInit) return;
+      window.__gdocMermaidInit = true;
+
+      const module = await import("https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs");
+      const mermaid = module.default;
+
+      const currentTheme = localStorage.getItem("color-theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const darkMode = currentTheme === "dark" || (currentTheme !== "light" && prefersDark);
+
+      mermaid.initialize({
+        startOnLoad: false,
+        flowchart: { useMaxWidth: true },
+        theme: darkMode ? "dark" : "default",
+        themeVariables: { darkMode }
+      });
+
+      const nodes = document.querySelectorAll(".mermaid");
+      await Promise.all(
+        Array.from(nodes).map(async (el, index) => {
+          const id = `graph-${index}-${Math.random().toString(36).slice(2)}`;
+          try {
+            const { svg, bindFunctions } = await mermaid.render(id, el.textContent || "");
+            el.innerHTML = svg;
+            bindFunctions?.(el);
+          } catch (_err) {
+            // Keep raw diagram text visible on render failure.
+          }
+        })
+      );
+    })();
+  </script>
+{{ end }}
+<!-- prettier-ignore-end -->

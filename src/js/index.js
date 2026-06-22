@@ -1,31 +1,11 @@
-import Clipboard from "clipboard"
 import "./accessibility.js"
 
-document.addEventListener("DOMContentLoaded", () => {
-  const clipboard = new Clipboard(".clip")
-
-  clipboard.on("success", (e) => {
-    const { trigger, clearSelection } = e
-
-    if (trigger.hasAttribute("data-copy-feedback")) {
-      trigger.classList.add("gdoc-post__codecopy--success", "gdoc-post__codecopy--out")
-      trigger.querySelector(".gdoc-icon.copy").classList.add("hidden")
-      trigger.querySelector(".gdoc-icon.check").classList.remove("hidden")
-
-      setTimeout(() => {
-        trigger.classList.remove("gdoc-post__codecopy--success", "gdoc-post__codecopy--out")
-        trigger.querySelector(".gdoc-icon.copy").classList.remove("hidden")
-        trigger.querySelector(".gdoc-icon.check").classList.add("hidden")
-      }, 3000)
-    }
-
-    clearSelection()
-  })
-
-  document.querySelectorAll(".highlight").forEach(createCopyButton)
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".highlight").forEach((highlightDiv) => createCopyButton(highlightDiv))
+  initClipboardIfNeeded()
 })
 
-const createCopyButton = (highlightDiv) => {
+function createCopyButton(highlightDiv) {
   const button = document.createElement("span")
 
   let codeSelector = "pre > code"
@@ -50,4 +30,33 @@ const createCopyButton = (highlightDiv) => {
     highlightDiv.classList.add("gdoc-post__codecontainer")
     highlightDiv.insertBefore(button, highlightDiv.firstChild)
   }
+}
+
+function initClipboardIfNeeded() {
+  const clipTriggers = document.querySelectorAll(".clip")
+  if (!clipTriggers.length) {
+    return
+  }
+
+  import("clipboard").then(({ default: Clipboard }) => {
+    const clipboard = new Clipboard(".clip")
+
+    clipboard.on("success", function (e) {
+      const trigger = e.trigger
+
+      if (trigger.hasAttribute("data-copy-feedback")) {
+        trigger.classList.add("gdoc-post__codecopy--success", "gdoc-post__codecopy--out")
+        trigger.querySelector(".gdoc-icon.copy").classList.add("hidden")
+        trigger.querySelector(".gdoc-icon.check").classList.remove("hidden")
+
+        setTimeout(function () {
+          trigger.classList.remove("gdoc-post__codecopy--success", "gdoc-post__codecopy--out")
+          trigger.querySelector(".gdoc-icon.copy").classList.remove("hidden")
+          trigger.querySelector(".gdoc-icon.check").classList.add("hidden")
+        }, 3000)
+      }
+
+      e.clearSelection()
+    })
+  })
 }

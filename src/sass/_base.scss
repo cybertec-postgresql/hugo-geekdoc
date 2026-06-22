@@ -332,7 +332,7 @@ svg.gdoc-icon {
         display: none;
       }
       & ~ label svg.gdoc-icon.gdoc_keyboard_arrow_left {
-        display: block;
+        display: block !important;
       }
     }
 
@@ -390,7 +390,8 @@ svg.gdoc-icon {
 .gdoc-page {
   min-width: calc(defaults.$body-min-width - defaults.$padding-32);
   flex-grow: 1;
-  padding: defaults.$padding-16 0;
+  padding: 0;
+  padding-top: defaults.$padding-16;
 
   h1,
   h2,
@@ -587,8 +588,25 @@ svg.gdoc-icon {
 }
 
 .gdoc-footer {
-  background: var(--footer-background);
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--footer-background) 80%, transparent), transparent 55%),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--footer-background) 70%, transparent), transparent 55%),
+    var(--footer-background);
   color: var(--footer-font-color);
+
+  &__wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: defaults.$padding-16 defaults.$padding-24;
+  }
+
+  &__line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: defaults.$padding-12;
+  }
 
   .fake-link {
     text-decoration: none;
@@ -617,6 +635,90 @@ svg.gdoc-icon {
     &:visited {
       color: var(--footer-link-color-visited);
     }
+  }
+
+  &__more {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: defaults.$padding-8;
+  }
+
+  &__more-label {
+    font-size: defaults.$font-size-14;
+    font-weight: 600;
+    margin-right: defaults.$padding-8;
+  }
+
+  &__more-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: defaults.$padding-12;
+    width: 100%;
+    justify-content: center;
+  }
+
+  &__more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: defaults.$padding-4;
+    padding: defaults.$padding-4 defaults.$padding-8;
+    border-radius: 999px;
+    font-size: defaults.$font-size-14;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--footer-font-color);
+    text-decoration: none;
+    background-color: transparent;
+    backdrop-filter: blur(4px);
+    transition:
+      background-color 0.15s ease-out,
+      color 0.15s ease-out,
+      transform 0.15s ease-out;
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--footer-font-color) 10%, transparent);
+      color: var(--footer-font-color);
+      transform: translateY(-1px);
+    }
+  }
+
+  &__more-icon {
+    width: defaults.$font-size-16;
+    height: defaults.$font-size-16;
+    flex-shrink: 0;
+  }
+
+  // Brand colors for product icons in footer "More" list
+  &__more-icon.cybertec {
+    color: #60a5fa;
+  }
+
+  &__more-icon.cpo {
+    color: #22c55e;
+  }
+
+  &__more-icon.cypex {
+    color: #a855ff;
+  }
+
+  &__more-icon.migrator {
+    color: #fb923c;
+  }
+
+  &__more-icon.scalefield {
+    color: #9ca3af;
+  }
+
+  &__more-icon.pgwatch {
+    color: #38bdf8;
+  }
+
+  &__more-text {
+    display: inline-block;
   }
 }
 
@@ -658,9 +760,30 @@ svg.gdoc-icon {
   }
 
   &__list {
-    visibility: hidden;
+    position: absolute;
+    top: calc(100% + defaults.$padding-4);
     left: 0;
     width: 100%;
+    max-height: 26rem;
+    padding: defaults.$padding-8;
+    margin: 0;
+    visibility: hidden;
+    overflow-y: auto;
+    border-radius: defaults.$border-radius;
+    background: var(--cx-surface, var(--body-background)) !important;
+    border: 1px solid color-mix(in srgb, var(--cx-border, var(--accent-color-lite)) 80%, transparent);
+    box-shadow:
+      0 18px 45px rgba(15, 23, 42, 0.35),
+      0 0 0 1px color-mix(in srgb, var(--cx-border-soft, var(--accent-color-lite)) 70%, transparent);
+    z-index: 140;
+
+    // Make search panel stand out more on small screens
+    @media screen and (max-width: defaults.$sm-breakpoint) {
+      background: color-mix(in srgb, var(--cx-surface, var(--body-background)) 96%, #000 4%) !important;
+      box-shadow:
+        0 24px 60px rgba(15, 23, 42, 0.55),
+        0 0 0 1px color-mix(in srgb, var(--cx-border-soft, var(--accent-color-lite)) 80%, transparent);
+    }
 
     ul {
       list-style: none;

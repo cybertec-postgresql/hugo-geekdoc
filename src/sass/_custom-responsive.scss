@@ -1,0 +1,86 @@
+@use "defaults";
+
+@media screen and (max-width: 70rem) {
+  body.gdoc-layout--custom {
+    .cx-page-bg-art {
+      display: none;
+    }
+
+    .cx-toc-panel {
+      display: none;
+    }
+
+    // Collapse to 2 columns (nav + content) on tablets
+    main.gdoc-main {
+      grid-template-columns: var(--cx-sidebar-width) minmax(0, 1fr) !important;
+    }
+  }
+}
+
+@media screen and (max-width: defaults.$sm-breakpoint) {
+  body.gdoc-layout--custom {
+    overflow: auto;
+
+    .wrapper {
+      min-height: auto;
+      height: auto;
+    }
+
+    main.gdoc-main {
+      grid-template-columns: 1fr !important;
+      height: auto;
+      min-height: auto;
+      overflow: visible;
+    }
+
+    // Mobile: full‑width fixed nav, controlled by menu checkbox
+    .gdoc-header .gdoc-nav__control {
+      display: inline-flex;
+    }
+
+    .gdoc-header .gdoc-menu-header__control {
+      display: none !important;
+    }
+
+    .gdoc-nav {
+      position: fixed;
+      top: var(--cx-header-total);
+      left: 0;
+      width: 100% !important;
+      height: calc(100vh - var(--cx-header-total));
+      border-right: none;
+      margin-left: 0 !important;
+      transform: translateX(-100%);
+      transition: transform 0.25s ease-out;
+      z-index: 130;
+    }
+
+    .gdoc-page {
+      height: auto;
+      overflow: visible;
+      padding-top: 0;
+    }
+
+    .cx-doc-hero {
+      padding: 24px 20px 20px;
+    }
+
+    .cx-tag-row,
+    .cx-breadcrumb-bar,
+    .cx-article {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    // Slide nav in/out with the standard menu-control checkbox
+    .wrapper:has(#menu-control:checked) {
+      // .gdoc-nav {
+      //   transform: translateX(0) !important;
+      // }
+
+      .gdoc-page {
+        opacity: 0.15;
+      }
+    }
+  }
+}

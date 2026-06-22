@@ -1,12 +1,7 @@
 {{ $current := . }}
 {{ template "tree-nav" dict "sect" .Site.Home.Sections "current" $current }}
-
-
-<!-- templates -->
 {{ define "tree-nav" }}
   {{ $current := .current }}
-
-
   <ul class="gdoc-nav__list">
     {{ $sortBy := (default "title" .current.Site.Params.geekdocFileTreeSortBy | lower) }}
     {{ range .sect.GroupBy "Weight" }}
@@ -42,13 +37,13 @@
         {{ if not .Params.geekdocHidden }}
           {{ $numberOfPages := (add (len .Pages) (len .Sections)) }}
           {{ $isParent := and (ne $numberOfPages 0) (not .Params.geekdocFlatSection) }}
+          {{ $isTopSection := and (default false .Site.Params.geekdocCustomLayout) $isParent (eq .Parent .Site.Home) }}
           {{ $isCurrent := eq $current . }}
           {{ $isAncestor := .IsAncestor $current }}
           {{ $id := substr (sha1 .Permalink) 0 8 }}
-          {{ $doCollapse := and $isParent (or .Params.geekdocCollapseSection (default false .Site.Params.geekdocCollapseAllSections)) }}
+          {{ $doCollapse := and $isParent (or .Params.geekdocCollapseSection (or (default false .Site.Params.geekdocCollapseAllSections) (default false .Site.Params.geekdocCustomLayout))) }}
 
-
-          <li>
+          <li class="gdoc-nav__item">
             <input
               type="checkbox"
               {{ if $doCollapse }}
@@ -60,11 +55,13 @@
             />
             <label
               {{ if $doCollapse }}
-                for="{{ printf "navtree-%s" $id }}" class="flex justify-between align-center"
+                for="{{ printf "navtree-%s" $id }}" class="gdoc-nav__label flex justify-between align-center"
               {{ end }}
             >
-              {{ if or .Content .Params.geekdocFlatSection }}
-                <span class="flex">
+              {{ if $isTopSection }}
+                <span class="cx-nav-section-label">{{ partial "utils/title" . }}</span>
+              {{ else }}
+                {{ if or .Content .Params.geekdocFlatSection }}
                   <a
                     href="{{ .RelPermalink }}"
                     class="gdoc-nav__entry{{- if eq $current . }}
@@ -73,9 +70,9 @@
                   >
                     {{ partial "utils/title" . }}
                   </a>
-                </span>
-              {{ else }}
-                <span class="flex">{{ partial "utils/title" . }}</span>
+                {{ else }}
+                  <span class="gdoc-nav__entry gdoc-nav__entry--section">{{ partial "utils/title" . }}</span>
+                {{ end }}
               {{ end }}
               {{ if $doCollapse }}
                 <svg class="gdoc-icon toggle gdoc_keyboard_arrow_left">
