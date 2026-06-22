@@ -1,33 +1,79 @@
 import Storage from "store2"
-import { TOGGLE_COLOR_THEMES, THEME, COLOR_THEME_AUTO } from "./config.js"
+import {
+  TOGGLE_COLOR_THEMES,
+  THEME,
+  COLOR_THEME_AUTO,
+  COLOR_THEME_LIGHT,
+  COLOR_THEME_DARK,
+} from "./config.js"
+;(() => {
+  applyTheme()
+})()
 
-const applyTheme = (init = true) => {
-  if (Storage.isFake()) return
+function resolveStoredColorTheme(stored) {
+  if (TOGGLE_COLOR_THEMES.includes(stored)) {
+    return stored
+  }
+  if (
+    stored === COLOR_THEME_AUTO ||
+    stored === undefined ||
+    stored === null ||
+    stored === ""
+  ) {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? COLOR_THEME_DARK
+      : COLOR_THEME_LIGHT
+  }
+  return COLOR_THEME_LIGHT
+}
 
-  const lstore = Storage.namespace(THEME)
-  const html = document.documentElement
-  const currentColorTheme = TOGGLE_COLOR_THEMES.includes(lstore.get("color-theme"))
-    ? lstore.get("color-theme")
-    : COLOR_THEME_AUTO
+document.addEventListener("DOMContentLoaded", () => {
+  const colorThemeToggle = document.getElementById("gdoc-color-theme")
 
-  html.setAttribute("class", `color-toggle-${currentColorTheme}`)
+  function toggleColorTheme() {
+    let lstore = Storage.namespace(THEME)
+    let currentColorTheme = resolveStoredColorTheme(lstore.get("color-theme"))
+    let nextColorTheme = toggle(TOGGLE_COLOR_THEMES, currentColorTheme)
 
-  if (currentColorTheme === COLOR_THEME_AUTO) {
-    html.removeAttribute("color-theme")
-  } else {
-    html.setAttribute("color-theme", currentColorTheme)
+    lstore.set("color-theme", TOGGLE_COLOR_THEMES[nextColorTheme])
+    applyTheme(false)
   }
 
+  colorThemeToggle.onclick = function () {
+    toggleColorTheme()
+  }
+
+  colorThemeToggle.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      toggleColorTheme()
+      event.preventDefault()
+    }
+  })
+})
+
+function applyTheme(init = true) {
+  if (Storage.isFake()) return
+
+  let lstore = Storage.namespace(THEME)
+  let html = document.documentElement
+  let raw = lstore.get("color-theme")
+  let currentColorTheme = resolveStoredColorTheme(raw)
+
+  if (raw !== currentColorTheme) {
+    lstore.set("color-theme", currentColorTheme)
+  }
+
+  html.setAttribute("class", "color-toggle-" + currentColorTheme)
+  html.setAttribute("color-theme", currentColorTheme)
+
   if (!init) {
-    // Reload required to re-initialize e.g. Mermaid with the new theme
-    // and re-parse the Mermaid code blocks.
     location.reload()
   }
 }
 
-const toggle = (value, list = []) => {
-  const current = list.indexOf(value)
-  const max = list.length - 1
+function toggle(list = [], value) {
+  let current = list.indexOf(value)
+  let max = list.length - 1
   let next = 0
 
   if (current < max) {
@@ -36,31 +82,3 @@ const toggle = (value, list = []) => {
 
   return next
 }
-
-;(() => {
-  applyTheme()
-})()
-
-document.addEventListener("DOMContentLoaded", () => {
-  const colorThemeToggle = document.getElementById("gdoc-color-theme")
-
-  const toggleColorTheme = () => {
-    const lstore = Storage.namespace(THEME)
-    const currentColorTheme = lstore.get("color-theme") || COLOR_THEME_AUTO
-    const nextColorTheme = toggle(currentColorTheme, TOGGLE_COLOR_THEMES)
-
-    lstore.set("color-theme", TOGGLE_COLOR_THEMES[nextColorTheme])
-    applyTheme(false)
-  }
-
-  colorThemeToggle.onclick = () => {
-    toggleColorTheme()
-  }
-
-  colorThemeToggle.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      toggleColorTheme()
-      event.preventDefault()
-    }
-  })
-})
