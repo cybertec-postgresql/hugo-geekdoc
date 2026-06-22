@@ -37,7 +37,8 @@
 }
 
 @mixin color_theme_dark {
-  --header-background: #{defaults.$main-color};
+  // --header-background: #{defaults.$main-color};
+    --header-background: #{defaults.$white};
   --header-font-color: #{defaults.$white};
 
   --body-background: #{defaults.$body-background-dark};

@@ -93,7 +93,10 @@
     </a>
   {{ end }}
 </span>
-<span class="gdoc-page__nav__product">{{ i18n "custom_product_of_cybertec" }}</span>
+<!-- <span class="gdoc-page__nav__product">{{ i18n "custom_product_of_cybertec" }}</span> -->
+   <a class="gdoc-brand gdoc-header__link flex gap-16 align-center" href="{{ .Site.Home.Permalink }}">
+    <span class="gdoc-page__nav__product">{{ i18n "custom_product_of_cybertec" }}</span>
+  </a>
 <span class="gdoc-page__nav">
   {{ with ($current.Scratch.Get "nextPage") }}
     <a

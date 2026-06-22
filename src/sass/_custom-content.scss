@@ -4,7 +4,7 @@ body.gdoc-layout--custom {
   }
 
   .cx-breadcrumb-bar {
-    background: var(--cx-surface);
+    // background: var(--cx-surface);
     border-bottom: 1px solid var(--cx-border);
     padding: 10px 32px;
     font-size: 12.5px;
@@ -31,26 +31,26 @@ body.gdoc-layout--custom {
   }
 
   .cx-doc-hero {
-    background: var(--header-background);
+    // background: var(--header-background);
     padding: 36px 32px 28px;
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .cx-doc-hero::after {
-    content: "";
-    position: absolute;
-    right: -30px;
-    top: -10px;
-    width: 320px;
-    height: 180px;
-    background: radial-gradient(circle at center, rgba(76, 146, 230, 0.26), transparent 64%);
-    pointer-events: none;
-  }
+  // .cx-doc-hero::after {
+  //   content: "";
+  //   position: absolute;
+  //   right: -30px;
+  //   top: -10px;
+  //   width: 320px;
+  //   height: 180px;
+  //   background: radial-gradient(circle at center, rgba(76, 146, 230, 0.26), transparent 64%);
+  //   pointer-events: none;
+  // }
 
   .cx-doc-hero h1 {
-    color: var(--header-font-color) !important;
+    color: var(--header-background) !important;
     font-size: 24px !important;
     margin: 0 0 10px;
     letter-spacing: -0.01em;
@@ -90,7 +90,7 @@ body.gdoc-layout--custom {
     align-items: center;
     gap: 12px;
     flex-wrap: wrap;
-    background: var(--cx-surface);
+    // background: var(--cx-surface);
   }
 
   .cx-tag-label {
@@ -122,7 +122,7 @@ body.gdoc-layout--custom {
 
   .cx-article {
     padding: 32px;
-    max-width: 860px;
+    // max-width: 860px;
     margin: 0 auto;
     line-height: 1.65;
   }

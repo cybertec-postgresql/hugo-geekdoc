@@ -1,0 +1,7 @@
+<div class="cx-breadcrumb-bar">
+  {{ range .Ancestors.Reverse }}
+    <a href="{{ .RelPermalink }}">{{ partial "utils/title" . }}</a>
+    <span class="cx-sep">›</span>
+  {{ end }}
+  <span class="cx-current">{{ partial "utils/title" . }}</span>
+</div>
