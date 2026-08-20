@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html
+  lang="{{ .Site.Language.Lang }}"
+  class="color-toggle-hidden"
+  {{ if default false .Site.Params.geekdocDarkModeCode }}code-theme="dark"{{ end }}
+>
+  <head>
+    {{ partial "head/meta" . }}
+    <title>
+      {{- if eq .Kind "home" -}}
+        {{ .Site.Title }}
+      {{- else -}}
+        {{ printf "%s | %s" (partial "utils/title" .) .Site.Title }}
+      {{- end -}}
+    </title>
+
+    {{ partial "head/favicons" . }}
+    {{ partial "head/rel-me" . }}
+    {{ partial "head/microformats" . }}
+    {{ partial "head/others" . }}
+    {{ partial "head/custom" . }}
+  </head>
+
+  <body
+    itemscope
+    itemtype="https://schema.org/WebPage"
+    class="{{ if default false .Site.Params.geekdocCustomLayout }}gdoc-layout--custom{{ end }}"
+  >
+    <div class="w-full flex justify-center">
+      <a href="#main-content" id="gdoc-to-main" class="gdoc-markdown__link">{{ i18n "skip_to_main_content" }}</a>
+    </div>
+
+    {{ partial "svg-icon-symbols" . }}
+
+
+    <div
+      class="wrapper {{ if default false .Site.Params.geekdocDarkModeDim }}dark-mode-dim{{ end }}"
+    >
+      {{ $navEnabled := default true .Page.Params.geekdocNav }}
+      {{ partial "site-header" (dict "Root" . "MenuEnabled" $navEnabled) }}
+
+
+      {{ if default false .Site.Params.geekdocCustomLayout }}
+        {{ partial "version-band" . }}
+      {{ end }}
+
+      <main class="container flex flex-even{{ if default false .Site.Params.geekdocCustomLayout }} gdoc-main{{ end }}">
+        {{ if $navEnabled }}
+          <aside class="gdoc-nav">
+            {{ partial "menu" . }}
+          </aside>
+        {{ end }}
+
+
+        <div class="gdoc-page">
+          {{ if default false .Site.Params.geekdocCustomLayout }}
+            <div class="cx-page-bg-art" aria-hidden="true">
+              {{ partial "big-data-circle-svg" . }}
+            </div>
+          {{ end }}
+          {{ template "main" . }}
+
+
+          <div class="gdoc-page__footer flex flex-wrap justify-between">
+            {{ $showPrevNext := (default true .Site.Params.geekdocNextPrev) }}
+            {{ if $showPrevNext }}
+              {{ if .Site.Params.geekdocMenuBundle }}
+                {{ partial "menu-bundle-np" . }}
+              {{ else }}
+                {{ partial "menu-filetree-np" . }}
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+
+        {{ if default false .Site.Params.geekdocCustomLayout }}
+          <aside class="cx-toc-panel" aria-label="Table of contents">
+            {{ partial "toc-rail" . }}
+          </aside>
+        {{ end }}
+      </main>
+
+      {{ partial "site-footer" . }}
+    </div>
+
+    {{ partial "foot" . }}
+  </body>
+</html>

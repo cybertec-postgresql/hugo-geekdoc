@@ -1,0 +1,82 @@
+<!-- prettier-ignore-start -->
+{{ if not (.Page.Scratch.Get "mermaid") }}
+  {{ .Page.Scratch.Set "mermaid" true }}
+  <script type="module">
+    (async function () {
+      if (window.__gdocMermaidInit) return;
+      window.__gdocMermaidInit = true;
+
+      const module = await import("https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs");
+      const mermaid = module.default;
+
+      const currentTheme = localStorage.getItem("color-theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const darkMode = currentTheme === "dark" || (currentTheme !== "light" && prefersDark);
+
+      const css = getComputedStyle(document.documentElement);
+      const v = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
+
+      mermaid.initialize({
+        startOnLoad: false,
+        flowchart: { useMaxWidth: true },
+        theme: "base",
+        themeVariables: {
+          darkMode,
+          fontFamily: v("--cx-font-mono", "monospace"),
+
+          background: v("--cx-surface", "#ffffff"),
+          textColor: v("--cx-text-primary", "#0f1923"),
+          lineColor: v("--cx-text-muted", "#8494a7"),
+
+          primaryColor: v("--cx-surface-alt", "#f7fafd"),
+          primaryTextColor: v("--cx-text-primary", "#0f1923"),
+          primaryBorderColor: v("--cx-accent", "#2d8cf0"),
+          secondaryColor: v("--cx-accent-glow", "#e8f3fe"),
+          secondaryTextColor: v("--cx-text-primary", "#0f1923"),
+          secondaryBorderColor: v("--cx-border", "#e2e8f0"),
+          tertiaryColor: v("--cx-surface-alt", "#f7fafd"),
+          tertiaryTextColor: v("--cx-text-secondary", "#4a5568"),
+          tertiaryBorderColor: v("--cx-border", "#e2e8f0"),
+
+          mainBkg: v("--cx-surface-alt", "#f7fafd"),
+          nodeBorder: v("--cx-accent", "#2d8cf0"),
+          clusterBkg: v("--cx-surface", "#ffffff"),
+          clusterBorder: v("--cx-border", "#e2e8f0"),
+          defaultLinkColor: v("--cx-text-muted", "#8494a7"),
+          edgeLabelBackground: v("--cx-surface-alt", "#f7fafd"),
+
+          actorBkg: v("--cx-surface-alt", "#f7fafd"),
+          actorBorder: v("--cx-accent", "#2d8cf0"),
+          actorTextColor: v("--cx-text-primary", "#0f1923"),
+          actorLineColor: v("--cx-border", "#e2e8f0"),
+          signalColor: v("--cx-text-secondary", "#4a5568"),
+          signalTextColor: v("--cx-text-primary", "#0f1923"),
+          labelBoxBkgColor: v("--cx-tag-bg", "#eef4ff"),
+          labelBoxBorderColor: v("--cx-tag-border", "#c7dcff"),
+          labelTextColor: v("--cx-tag-text", "#1a5fb5"),
+          loopTextColor: v("--cx-text-secondary", "#4a5568"),
+          noteBkgColor: v("--cx-accent-glow", "#e8f3fe"),
+          noteBorderColor: v("--cx-accent", "#2d8cf0"),
+          noteTextColor: v("--cx-text-primary", "#0f1923"),
+          activationBkgColor: v("--cx-surface", "#ffffff"),
+          activationBorderColor: v("--cx-accent", "#2d8cf0")
+        }
+      });
+
+      const nodes = document.querySelectorAll(".mermaid");
+      await Promise.all(
+        Array.from(nodes).map(async (el, index) => {
+          const id = `graph-${index}-${Math.random().toString(36).slice(2)}`;
+          try {
+            const { svg, bindFunctions } = await mermaid.render(id, el.textContent || "");
+            el.innerHTML = svg;
+            bindFunctions?.(el);
+          } catch (_err) {
+            // Keep raw diagram text visible on render failure.
+          }
+        })
+      );
+    })();
+  </script>
+{{ end }}
+<!-- prettier-ignore-end -->

@@ -1,0 +1,6 @@
+<div class="gdoc-sprite-sheet" aria-hidden="true">
+  {{ range resources.Match "sprites/*.svg" }}
+    {{ printf "<!-- geekdoc include: %s -->" . | safeHTML }}
+    {{ .Content | safeHTML }}
+  {{ end }}
+</div>
