@@ -147,6 +147,12 @@ body.gdoc-layout--custom {
     color: var(--cx-icon-brightness-dark);
   }
 
+  .gdoc-support__button {
+    background-color: var(--ci-color-secondary);
+    border-radius: 9px;
+  }
+
+  /* Navy on cyan — white-on-#4ec1ec fails WCAG AA (~2.07:1). */
   .gdoc-support__button a {
     display: inline-flex;
     align-items: center;
@@ -154,7 +160,7 @@ body.gdoc-layout--custom {
     padding: 0 8px;
     border-radius: 9px;
     background: transparent;
-    color: var(--header-font-color) !important;
+    color: var(--ci-color-primary) !important;
     text-decoration: none !important;
     font-size: 12px;
     font-weight: 600;
@@ -162,7 +168,14 @@ body.gdoc-layout--custom {
   }
 
   .gdoc-support__button a:hover {
-    background: color-mix(in srgb, var(--header-font-color) 8%, transparent);
+    background: color-mix(in srgb, var(--ci-color-primary) 10%, transparent);
+  }
+
+  .gdoc-support__button a:focus-visible,
+  #gdoc-color-theme:focus-visible,
+  .gdoc-search__input:focus-visible {
+    outline: 2px solid var(--ci-color-secondary);
+    outline-offset: 2px;
   }
 
 

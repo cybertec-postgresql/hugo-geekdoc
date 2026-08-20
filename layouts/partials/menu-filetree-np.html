@@ -88,7 +88,9 @@
       href="{{ .this.RelPermalink }}"
       title="{{ .name }}"
     >
-      <i class="gdoc-icon">gdoc_arrow_left_alt</i>
+      <svg class="gdoc-icon gdoc_arrow_left_alt" aria-hidden="true" focusable="false">
+        <use xlink:href="#gdoc_arrow_left_alt"></use>
+      </svg>
       {{ .name }}
     </a>
   {{ end }}
@@ -105,7 +107,9 @@
       title="{{ .name }}"
     >
       {{ .name }}
-      <i class="gdoc-icon">gdoc_arrow_right_alt</i>
+      <svg class="gdoc-icon gdoc_arrow_right_alt" aria-hidden="true" focusable="false">
+        <use xlink:href="#gdoc_arrow_right_alt"></use>
+      </svg>
     </a>
   {{ end }}
 </span>
