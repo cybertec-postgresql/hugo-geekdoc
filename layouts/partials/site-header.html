@@ -42,13 +42,17 @@
         {{ end }}
 
 
-        <span id="gdoc-color-theme" tabindex="0" role="button" aria-pressed="false">
-          <svg class="gdoc-icon gdoc_brightness_dark">
-            <title>{{ i18n "button_toggle_dark" }}</title>
+        <span
+          id="gdoc-color-theme"
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+          aria-label="{{ i18n "button_toggle_dark" }}"
+        >
+          <svg class="gdoc-icon gdoc_brightness_dark" aria-hidden="true" focusable="false">
             <use xlink:href="#gdoc_brightness_dark"></use>
           </svg>
-          <svg class="gdoc-icon gdoc_brightness_light">
-            <title>{{ i18n "button_toggle_dark" }}</title>
+          <svg class="gdoc-icon gdoc_brightness_light" aria-hidden="true" focusable="false">
             <use xlink:href="#gdoc_brightness_light"></use>
           </svg>
         </span>

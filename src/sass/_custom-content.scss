@@ -22,7 +22,7 @@ body.gdoc-layout--custom {
   }
 
   .cx-breadcrumb-bar a:hover {
-    color: var(--cx-accent);
+    color: var(--cx-accent-soft);
   }
 
   .cx-current {
@@ -135,7 +135,8 @@ body.gdoc-layout--custom {
 
   .cx-article h3 {
     margin: 24px 0 12px;
-    color: var(--cx-accent);
+    /* accent-soft passes AA on white; raw --cx-accent (#2d8cf0) does not. */
+    color: var(--cx-accent-soft);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-size: 15px;
